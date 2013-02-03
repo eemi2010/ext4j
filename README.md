@@ -1,4 +1,4 @@
-ext4j
+Ext4j Explorer
 =====
 
-Java API for Ext JS
+Ext4j Documentation and example application.
