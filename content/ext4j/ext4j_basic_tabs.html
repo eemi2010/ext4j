@@ -1,0 +1,58 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.google.gwt.user.client.Window;
+import com.nttdata.ext4j.client.core.Component;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.events.handlers.component.EventHandler;
+import com.nttdata.ext4j.client.layout.Layout;
+import com.nttdata.ext4j.client.ui.Panel;
+import com.nttdata.ext4j.client.ui.TabPanel;
+import com.nttdata.ext4j.client.ui.Viewport;
+import com.nttdata.ext4j.explorer.client.core.Constants;
+
+public class Demo extends ExtEntryPoint {
+
+    private Panel tabItem;
+
+    @Override
+    public void onLoad() {
+
+        TabPanel tabPanel = new TabPanel();
+        tabPanel.setPlain(true);
+        tabPanel.setBodyPadding(10);
+
+        tabItem = new Panel("Normal Tab");
+        tabItem.setHtml(Constants.getShortBogusMarkup());
+        tabPanel.add(tabItem);
+
+        tabItem = new Panel("Closable Tab");
+        tabItem.setClosable(true);
+        tabItem.setHtml("I m a closable Tab");
+        tabPanel.add(tabItem);
+
+        final Panel eventItem = new Panel("Event Tab");
+        eventItem.setHtml("I m an event Tab");
+        eventItem.addActivateHandler(new EventHandler() {
+            @Override
+            public void onEvent(Component component) {
+                Window.alert(eventItem.getTitle() + " was clicked");
+            }
+        });
+        tabPanel.add(eventItem);
+
+        tabItem = new Panel("Disabled Tab");
+        tabItem.setDisabled(true);
+        tabItem.setHtml(Constants.getShortBogusMarkup());
+        tabPanel.add(tabItem);
+        
+        Viewport.get(Layout.FIT).add(tabPanel);
+    }
+
+}
+
+</textarea>

@@ -1,0 +1,67 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.layout.Layout;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.Panel;
+import com.nttdata.ext4j.client.ui.TabPanel;
+import com.nttdata.ext4j.client.ui.ToolBar;
+import com.nttdata.ext4j.client.ui.Viewport;
+import com.nttdata.ext4j.explorer.client.core.Constants;
+import com.nttdata.ext4j.ux.tabclosemenu.client.TabCloseMenu;
+
+public class Demo extends ExtEntryPoint {
+
+    private int index = 1;
+    private TabPanel tabPanel;
+
+    @Override
+    public void onLoad() {
+
+        Panel panel = new Panel("Tab with contextmenu plugin");
+        panel.setBodyPadding(30);
+
+        ToolBar tb = new ToolBar();
+        tb.add(new Button("Add Closable Tab", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                addTab(true);
+            }
+        }));
+        tb.add(new Button("Add Unclosable Tab", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                addTab(false);
+            }
+        }));
+        panel.addDocked(tb);
+
+        tabPanel = new TabPanel();
+        tabPanel.setHeight(300);
+        tabPanel.setPlugins(new TabCloseMenu());
+
+        panel.add(tabPanel);
+
+        addTab(true);
+        addTab(false);
+
+        Viewport.get(Layout.FIT).add(panel);
+    }
+
+    private void addTab(boolean closable) {
+        Panel tabItem = new Panel("Tab " + index++);
+        tabItem.setHtml(Constants.getShortBogusMarkup());
+        tabItem.setClosable(closable);
+        tabItem.setIconCls("tabs");
+        tabPanel.add(tabItem);
+    }
+
+}
+</textarea>

@@ -1,0 +1,48 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.google.gwt.user.client.ui.RootPanel;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.core.config.Position;
+import com.nttdata.ext4j.client.layout.Layout;
+import com.nttdata.ext4j.client.ui.Panel;
+
+public class Demo extends ExtEntryPoint {
+
+    @Override
+    public void onLoad() {
+
+        Panel container = new Panel("Absolute Layout");
+        container.setLayout(Layout.ABSOLUTE);
+        container.setSize(1000, 600);
+        container.setCollapsible(true);
+        container.setXY(30, 50);
+        container.setTitleAlign(Position.CENTER);
+
+        Panel panel1 = new Panel("Panel 1");
+        panel1.setSize(200, 200);
+        panel1.setHtml("Positioned at x:50, y:50");
+        panel1.setFrame(true);
+        panel1.setXY(50, 50);
+        container.add(panel1);
+
+        Panel panel2 = new Panel("Panel 2");
+        panel2.setSize(200, 200);
+        panel2.setFrame(true);
+        panel2.setXY(125, 125);
+        panel2.setHtml("Positioned at x:125, y:125");
+        container.add(panel2);
+
+        RootPanel.get().add(container);
+    }
+
+}
+
+
+}
+
+</textarea>

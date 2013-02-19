@@ -1,0 +1,60 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.google.gwt.user.client.ui.RootPanel;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.layout.BorderRegion;
+import com.nttdata.ext4j.client.layout.Layout;
+import com.nttdata.ext4j.client.ui.Panel;
+
+public class Demo extends ExtEntryPoint {
+
+    @Override
+    public void onLoad() {
+
+        Panel container = new Panel("Border Layout");
+        container.setLayout(Layout.BORDER);
+        container.setSize(1000, 600);
+        container.setCollapsible(true);
+        container.setXY(30, 50);
+
+        Panel navigation = new Panel("Navigation");
+        navigation.setRegion(BorderRegion.WEST);
+        navigation.setMargin("5 0 0 0");
+        navigation.setBodyPadding(15);
+        navigation.setHtml("Secondary Content like navigation links could go here");
+        navigation.setWidth(175);
+        navigation.setMinSize(100);
+        navigation.setMaxSize(250);
+        navigation.setCollapsible(true);
+        navigation.setSplit(true);
+        container.add(navigation);
+
+        Panel mainContent = new Panel("Main Content");
+        mainContent.setBodyPadding(10);
+        mainContent.setCollapsible(false);
+        mainContent.setHtml("<b>Main Page</b><br/>This is where the main content would go");
+        mainContent.setRegion(BorderRegion.CENTER);
+        mainContent.setMargin("5 0 0 0");
+        container.add(mainContent);
+
+        Panel footer = new Panel("Footer");
+        footer.setRegion(BorderRegion.SOUTH);
+        footer.setBodyPadding(10);
+        footer.setHtml("Footer");
+        footer.setHeight(120);
+        footer.setMinSize(75);
+        footer.setMaxSize(250);
+        footer.setCollapsible(true);
+        footer.setSplit(true);
+        container.add(footer);
+
+        RootPanel.get().add(container);
+    }
+
+}
+</textarea>

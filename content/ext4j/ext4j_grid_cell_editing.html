@@ -1,0 +1,109 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.core.config.Dock;
+import com.nttdata.ext4j.client.data.Store;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.grid.column.GridColumn;
+import com.nttdata.ext4j.client.grid.column.GridColumnEditor;
+import com.nttdata.ext4j.client.grid.plugin.CellEditing;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.GridPanel;
+import com.nttdata.ext4j.client.ui.ToolBar;
+import com.nttdata.ext4j.client.ui.Viewport;
+import com.nttdata.ext4j.client.ui.form.field.DateField;
+import com.nttdata.ext4j.client.ui.form.field.NumberField;
+import com.nttdata.ext4j.explorer.client.data.DataUtil;
+import com.nttdata.ext4j.explorer.client.data.DataUtil.Company;
+
+public class Demo extends ExtEntryPoint {
+
+    private Store store;
+    private CellEditing cellEditing = new CellEditing(1);
+
+    @Override
+    public void onLoad() {
+
+        store = new Store(DataUtil.getCompanyList());
+
+        final GridPanel grid = new GridPanel(store);
+        grid.setHeight(350);
+        grid.setWidth(600);
+        grid.setTitle("Edit companies ?");
+        grid.setCollapsible(true);
+        grid.setFrame(true);
+        grid.setResizable(true);
+        grid.setDraggable(true);
+        grid.setMultiSelect(true);
+        grid.setXY(100, 100);
+        grid.setPlugins(cellEditing);
+
+        GridColumn column = new GridColumn("Company", DataUtil.Company.COMPANY_NAME);
+        column.setFlex(1);
+        column.setFilterable(true);
+
+        GridColumnEditor editor = new GridColumnEditor();
+        editor.setAllowBlank(false);
+        column.setEditor(editor);
+        grid.addColumn(column);
+
+        column = new GridColumn("Price", DataUtil.Company.PRICE);
+        column.setSortable(true);
+        column.setWidth(75);
+        column.setRenderer("usMoney");
+
+        NumberField priceEditor = new NumberField();
+        priceEditor.setAllowBlank(false);
+        priceEditor.setMinValue(0);
+        priceEditor.setMaxValue(100000);
+        column.setEditor(priceEditor);
+        grid.addColumn(column);
+
+        column = new GridColumn("Change", DataUtil.Company.CHANGE);
+        column.setSortable(true);
+        column.setWidth(75);
+        grid.addColumn(column);
+
+        column = new GridColumn("% Change", Company.CHANGE_IN_PERCENT);
+        column.setSortable(true);
+        column.setWidth(75);
+        grid.addColumn(column);
+
+        column = new GridColumn("Last Updated", Company.LAST_UPDATE);
+        column.setSortable(true);
+        column.setWidth(75);
+
+        DateField updateEditor = new DateField();
+        updateEditor.setFormat("m/d/y");
+        updateEditor.setMinValue("01/01/06");
+        updateEditor.setDisabledDays(0, 6);
+        updateEditor.setDisabledDaysText("Updates cant be changed on the weekends");
+        column.setEditor(updateEditor);
+
+        grid.addColumn(column);
+
+        grid.renderColumns();
+
+        ToolBar tb = new ToolBar(Dock.TOP);
+        tb.add(new Button("Add Company", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                Company c = new Company("New company", 83.81, 0.28, 0.34, "9/1/2013");
+                store.insert(0, c);
+                cellEditing.startEditByPosition(0, 0);
+                button.setDisabled(true);
+            }
+        }));
+        grid.addDocked(tb);
+
+        Viewport.get().add(grid);
+    }
+
+}
+</textarea>

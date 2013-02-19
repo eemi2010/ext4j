@@ -1,0 +1,137 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.data.BaseModel;
+import com.nttdata.ext4j.client.data.Store;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.grid.column.GridColumn;
+import com.nttdata.ext4j.client.grid.feature.Grouping;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.GridPanel;
+import com.nttdata.ext4j.client.ui.Viewport;
+
+public class Demo extends ExtEntryPoint {
+
+    @Override
+    public void onLoad() {
+
+        Store store = new Store(Restaurant.getList());
+        store.setGroupField(Restaurant.CUISINE);
+        // store.setSorters(Restaurant.CUISINE, Restaurant.NAME);
+
+        GridPanel grid = new GridPanel(store);
+        grid.setHeight(350);
+        grid.setWidth(600);
+        grid.setTitle("Restaurants");
+        grid.setCollapsible(true);
+        grid.setXY(100, 100);
+        grid.setFrame(true);
+        grid.setResizable(true);
+        grid.setDraggable(true);
+
+        GridColumn column = new GridColumn("Name", Restaurant.NAME);
+        column.setFlex(1);
+        column.setSortable(false);
+        grid.addColumn(column);
+        
+        grid.addColumn(new GridColumn("Cuisine", Restaurant.CUISINE));
+        grid.renderColumns();
+
+        final Grouping groupingFeature = new Grouping();
+        groupingFeature.setStartCollapsed(true);
+        
+        grid.setFeatures(groupingFeature);
+        grid.addButtons(new Button("Clear Grouping", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                groupingFeature.disable();
+                button.setDisabled(true);
+            }
+        }));
+        Viewport.get().add(grid);
+
+    }
+
+    private static class Restaurant extends BaseModel {
+        private static final String NAME = "name";
+        private static final String CUISINE = "cuisine";
+
+        private Restaurant(String name, String cuisine) {
+            this.set(NAME, name);
+            this.set(CUISINE, cuisine);
+        }
+
+        public static List<Restaurant> getList() {
+            List<Restaurant> list = new ArrayList<Demo.Restaurant>();
+            list.add(new Restaurant("Cheesecake Factory", "American"));
+            list.add(new Restaurant("University Cafe", "American"));
+            list.add(new Restaurant("Slide Bar", "American"));
+            list.add(new Restaurant("Shokolaat", "American"));
+            list.add(new Restaurant("Gordon Biersch", "American"));
+            list.add(new Restaurant("Crepevine", "American"));
+            list.add(new Restaurant("Creamery", "American"));
+            list.add(new Restaurant("Old Pro", "American"));
+            list.add(new Restaurant("Nola's", "Cajun"));
+            list.add(new Restaurant("House of Bagels", "Bagels"));
+            list.add(new Restaurant("The prolific Oven", "Sandwiches"));
+            list.add(new Restaurant("Buca die Beppo", "Italian"));
+            list.add(new Restaurant("Pasta ?", "Italian"));
+            list.add(new Restaurant("Madame Tam", "Asian"));
+            list.add(new Restaurant("Sprout Cafe", "Salad"));
+            list.add(new Restaurant("Junoon", "Indian"));
+            list.add(new Restaurant("Bistro Maxine", "French"));
+            list.add(new Restaurant("Three Seasons", "Vietnamese"));
+            list.add(new Restaurant("Joya", "Tapas"));
+            list.add(new Restaurant("Jing Jing", "Chinese"));
+            list.add(new Restaurant("Patxi's Pizza", "Pizza"));
+            list.add(new Restaurant("Evvia Estiatorio", "Mediterranean"));
+            list.add(new Restaurant("Cafe 220", "Mediterranean"));
+            list.add(new Restaurant("Cafe Renaissance", "Mediterranean"));
+            list.add(new Restaurant("Gyros-Gyros", "Mediterranean"));
+            list.add(new Restaurant("Mango Caribbean Cafe", "Caribbean"));
+            list.add(new Restaurant("Coconuts Caribbean Restaurant &amp; Bar", "Vietnamese"));
+            list.add(new Restaurant("Rose &amp; Crown", "English"));
+            list.add(new Restaurant("Baklava", "Mediterranean"));
+            list.add(new Restaurant("Mendarin Gourmet", "Chinese"));
+            list.add(new Restaurant("Bangkok Cuisine", "Thai"));
+            list.add(new Restaurant("Darbar Indian Cuisine", "Indian"));
+            list.add(new Restaurant("Mantra", "Indian"));
+            list.add(new Restaurant("Janta", "Indian"));
+            list.add(new Restaurant("Hyderabad House", "Indian"));
+            list.add(new Restaurant("Starbucks", "Coffee"));
+            list.add(new Restaurant("Peet's Coffee", "Coffee"));
+            list.add(new Restaurant("Coupa Cafe", "Coffee"));
+            list.add(new Restaurant("Il Fornaio", "Italian"));
+            list.add(new Restaurant("Lavanda", "Mediterranean"));
+            list.add(new Restaurant("McArthur Park", "American"));
+            list.add(new Restaurant("St Michael's Alley", "Californian"));
+            list.add(new Restaurant("Osteria", "Italian"));
+            list.add(new Restaurant("Vero", "Italian"));
+            list.add(new Restaurant("Cafe Renzo", "Italian"));
+            list.add(new Restaurant("Miyake", "Sushi"));
+            list.add(new Restaurant("Sushi", "Tomo"));
+            list.add(new Restaurant("Kanpai", "Sushi"));
+            list.add(new Restaurant("Pizza My Heart", "Pizza"));
+            list.add(new Restaurant("New York Pizza", "Pizza"));
+            list.add(new Restaurant("California Pizza Kitchen", "Pizza"));
+            list.add(new Restaurant("Round Table", "Pizza"));
+            list.add(new Restaurant("Loving Hut", "Vegan"));
+            list.add(new Restaurant("Graden Fresh", "Vegan"));
+            list.add(new Restaurant("Cafe Epi", "French"));
+            list.add(new Restaurant("Tai Pan", "Chinese"));
+
+            return list;
+        }
+    }
+
+}
+</textarea>

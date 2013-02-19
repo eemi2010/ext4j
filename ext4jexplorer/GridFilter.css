@@ -1,0 +1,25 @@
+.ux-filtered-column {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.ux-gridfilter-text-icon {
+    background-image: url(find.png) !important;
+}
+
+
+.ux-rangemenu-icon {
+    margin-top: 0;
+}
+
+.ux-rangemenu-gt {
+    background-image: url(greater_than.png) !important;
+}
+
+.ux-rangemenu-lt {
+    background-image: url(less_than.png) !important;
+}
+
+.ux-rangemenu-eq {
+    background-image: url(equals.png) !important;
+}

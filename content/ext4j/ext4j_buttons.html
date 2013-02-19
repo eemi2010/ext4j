@@ -1,0 +1,94 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.events.handlers.menu.item.ItemClickHandler;
+import com.nttdata.ext4j.client.laf.Alignment;
+import com.nttdata.ext4j.client.laf.ButtonScale;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.Menu;
+import com.nttdata.ext4j.client.ui.MenuItem;
+import com.nttdata.ext4j.client.ui.SplitButton;
+
+public class Demo extends ExtEntryPoint {
+
+    @Override
+    public void onLoad() {
+
+        Button button = new Button("Ext Button");
+        button.setScale(ButtonScale.LARGE);
+        button.setXY(100, 100);
+        button.addClickHandler(new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                Window.alert("Button was clicked !");
+            }
+        });
+
+        RootPanel.get().add(button);
+
+        Button menuButton = new Button("Menu Button");
+        menuButton.setArrowAlign(Alignment.BOTTOM);
+
+        Menu menu = new Menu();
+        menu.addItem(new MenuItem("Item 1"));
+        menu.addItem(new MenuItem("Item 2"));
+        menu.addItem(new MenuItem("Item 3"));
+        menu.addItem(new MenuItem("Item 4"));
+        menuButton.setMenu(menu);
+        menuButton.setXY(150, 100);
+
+        RootPanel.get().add(menuButton);
+
+        SplitButton splitButton = new SplitButton("Split Button");
+        splitButton.setXY(200, 100);
+
+        menu = new Menu();
+        MenuItem item = new MenuItem("Item 1");
+        item.addClickHandler(new ItemClickHandler() {
+            @Override
+            public void onEvent(MenuItem item, EventObject event) {
+                Window.alert("Item 1 waw clicked !!");
+            }
+        });
+        menu.addItem(item);
+        menu.addItem(new MenuItem("Item 2"));
+        menu.addItem(new MenuItem("Item 3"));
+
+        splitButton.setMenu(menu);
+
+        RootPanel.get().add(splitButton);
+
+        Button buttonWithIcon = new Button("Button with icon");
+        buttonWithIcon.setScale(ButtonScale.MEDIUM);
+        buttonWithIcon.setIcon("imgs/quit.png");
+        buttonWithIcon.setXY(250, 100);
+        RootPanel.get().add(buttonWithIcon);
+
+        buttonWithIcon = new Button("Toggle Button with icon");
+        buttonWithIcon.setScale(ButtonScale.MEDIUM);
+        buttonWithIcon.setIcon("imgs/quit.png");
+        buttonWithIcon.setXY(300, 100);
+        buttonWithIcon.setEnableToggle(true);
+        buttonWithIcon.addClickHandler(new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                if (button.isPressed()) {
+                    Window.alert("I m pressed");
+                }
+            }
+        });
+        RootPanel.get().add(buttonWithIcon);
+    }
+
+}
+
+</textarea>

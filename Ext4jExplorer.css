@@ -1,0 +1,128 @@
+/** Add css rules here for your application. */
+
+
+.dp-highlighter {
+  white-space: nowrap;
+  overflow: visible;
+  font-size: 11px;  
+  font-family:monospace;
+}
+
+.dp-highlighter ol, .dp-highlighter ol li {
+  font-family:monospace;
+}
+
+
+h1 {
+    font-size: 55em;
+    font-weight: bold;
+    color: #67AB17;
+}
+
+h2.title{
+	display: block;
+	color: #314E64;
+	font-weight:bold;
+	font-size: 2.1em;
+	margin-top: 25px;
+	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+}
+
+h2 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #67AB17;
+}
+
+
+.content {
+    padding: 25px;
+	background-color: #F4F4F4;
+}
+
+.content .x-panel-body {
+    background-color: #F4F4F4;
+}
+
+.emph{
+	color: #67AB17;
+	font-weight:bold;
+}
+
+.docPanel .x-panel-body {
+    background-color: #F4F4F4;
+    font-size: 15px;
+    font: 16px / 1.4em "Times New Roman", "Helvetica Neue", Arial, "Lucida Grande", sans-serif !important;
+    font-family: Times New Roman, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.4em;
+}
+.codeText{
+	color: #67AB17;
+	font-weight:bold;
+	font-style: italic;
+}
+.doc_text {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	font-size: 1.2em;
+	/*color: #333333;*/
+    font-family: ‘Times New Roman’, Monaco, monospace;
+}
+div.doc_content{
+	padding-left: 25px;
+}
+
+#app-header {
+    color: #596F8F;
+    font-size: 22px;
+    font-weight: 200;
+    padding: 8px 15px;
+    text-shadow: 0 1px 0 #fff;
+}
+
+
+.ux-notification-window .x-window-body {
+	text-align: center;
+	padding: 15px 5px 15px 5px;
+	width: 200px;
+}
+
+
+
+.ux-notification-light .x-window-header {
+	background-color: transparent;
+}
+
+body .ux-notification-light {
+	background-image: url('ext4jexplorer/fader.png');
+}
+
+.ux-notification-light .x-window-body {
+	text-align: center;
+	padding: 15px 5px 18px 5px;
+	width: 200px;
+	background-color: transparent;
+	border: 0px solid white;
+}
+
+
+.ux-notification-icon-information {
+	background-image: url('ext4jexplorer/icon16_info.png');
+}
+
+.ux-notification-icon-error {
+	background-image: url('ext4jexplorer/icon16_error.png');
+}
+
+
+.new-tab {
+    background-image:url(imgs/panel.png ) !important;
+}
+
+.tabs {
+    background-image:url(imgs/panel.png ) !important;
+}

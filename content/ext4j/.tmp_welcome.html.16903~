@@ -1,0 +1,32 @@
+<div class="dlLink" id="btn_div">
+	<!--a class="dl" target="_blank" style="color:#67AB17;font-weight:bold;" href="http://emitrom.com/touch4j">Download Touch4j</a !-->
+</div>
+<img  src="imgs/touch4j_pic.png" style="float:right;" />
+<div class="content">
+	
+	Version: <span style="color:#314E64;font-weight:bold;">3.1</span> <br />
+	Release Date :<span style="color:#314E64;font-weight:bold;"> Jan 24 2013</span> <br /><br/>
+	
+	
+	<h1  style="color: #314E64; padding-bottom:20px;" >What's new in this release ? </h1>
+	- Support for <span style="color:#67AB17;">Sencha Touch 2.1</span><br/>
+	- Support for <span style="color:#67AB17;">Apache Cordova(PhoneGap) 2.2</span><br/>
+	- Support for <span style="color:#67AB17;">Google Maps 3.9</span><br/>
+	- Support for <span style="color:#67AB17;">GWT 2.5</span><br/>
+	- Support for <span style="color:#67AB17;">Titanium Mobile 3.0</span><br/>
+	- Use of <span style="color:#67AB17;">SafeHtml</span> for Templates in DataView Components <br/>
+	- Extended <span style="color:#67AB17;">UI Binder</span> support<br/>
+	<!--- Support for <span style="color:#67AB17;">GWT Designer</span> support<br/> -->
+	- Real world example with the source of the <span style="color:#67AB17;">Cordova API Explorer</span><br/>
+	- Lots of <span style="color:#67AB17;">performance impovement</span><br/>
+	- Lots of <span style="color:#67AB17;">Bugfixes</span> <br/>
+	
+	<br/>
+	<br/>
+	
+
+	
+</div>
+
+
+			

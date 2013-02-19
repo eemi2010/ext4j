@@ -1,0 +1,136 @@
+<div class="doc_content">
+	<img  src="imgs/ext4j_app.jpg" style="float:right;height:40%;" />
+	<h2 class="title">Why a new approach on Ext JS Development ?</h2>
+	
+	<p class="doc_text">
+		When it comes to Rich Internet Applications Sencha's<span class="emph"> Ext JS </span>is definitely one the richest and most 
+		powerful library on the market.
+		<br/><br/>
+		 At <a href="www.nttdata.com/europe">NTT DATA</a> we have been writing big scale J2EE applications with EXT JS 
+		as the framework of choice for the UI for years now. Even though we were always able to get things done(and believe us we wrote some of the craziest Ext JS based applications), there is one thing we could'nt deny : 
+		<span class="emph">JavaScript is a nightmare when it comes to big scale applications!</span>.  
+		<br/><br/>
+		 This is not an attempt to diss JavaScript! With the browser becoming a stronger platform everyday we all know
+		 that there is no way around JavaScript for browser based applications. But there are facts
+		 that can't by denied  and made us think about a new  way of writing enterprise applications with EXT JS: 
+		 <br/><br/>
+		 - <span class="emph">Compile time errors</span>
+		 <br/>
+		 Being able to catch errors before the application even runs is capital for any project(specially big scale one).<br/>
+		 Take a look at this example in JavaScript:<br/>
+<textarea name="code" class="java:nocontrols" rows="15" cols="50">	
+var xhr = new XMLHttpRequest();
+//code here
+if(xhr.readystate == 4){
+   console.log("xhr successfull");
+   //Do something here
+}
+</textarea><br/> 
+         You get the problem right ? The code above wont run as expected and no tool will catch that (because is fundamentally not an error in JavaScript). Now imagine having 
+         this type of errors hidden in a 10K line of code project. Scary !!
+		 
+		 		 <br/><br/>
+		 - <span class="emph">Tooling a.k.a IDE Support</span>
+		 <br/>
+		 JavaScript tooling has gotten better and better over the time. IDEs like Aptana and JetBrain have made writing JavaScript code enjoyable.
+		 Sencha just released a set of tools to make EXT JS development easier. But real software development goes beyond autocompletion and content assist.
+		 Refactoring JavaScript code for example is not easy and no JS tool will help you with that.
+		 
+		 		 		 <br/><br/>
+		 - <span class="emph">Real Software Engineering</span>
+		 <br/>
+		 Interface based design, Design patterns, Composition, Encapsulation, this are things that are not built in the JavaScript language and need to be emulated. 
+		 The problem with emulation is that there are tons of way to do the same things. While working on a big scale project it s almost 
+		 impossible to ensure that everyone is following the same code style.
+		 
+		 
+		 	 		 		 <br/><br/>
+		 - <span class="emph">Backend Integration</span>
+		 <br/>
+		 Even though Ext JS provides nice tools to deal with any type of backend (Ext Direct) we always have to deal with two programming models
+		 because of backend ist mostly based on Java. The ability to leverage to same language through out the entire project is a huge productivity bost.
+	 </p>
+	
+	 <h2 class="title">Meet Ext4j</h2>
+	 <p class="doc_text">
+	   The <span class="emph">Extj library</span> is an attempt to solve the problems mentioned above by giving developers the ability to program in <span class="emph">Java</span> and having the <span class="emph">Google Web Toolkit</span>
+	   generate <span class="emph">high efficient JavaScript</span> for you. <br/><br/>
+	   
+	   Note that this is not about promoting the Java language or saying that Java is better than JavaScript. But Java was designed from
+	   the ground up to support big scale applications. Plus the megaton of free available tools in the Java ecosystem makes it a good candidate for 
+	   enterprise software.<br/><br/>
+	   
+	   This toolkit targets project that must use EXT JS but not necessary JavaScript as the input language. If your project is not bound the an EXT JS license(like ours)
+	   and you are free to choose another library you might want to consider  <span class="emph">Sencha's GXT library</span>.<br/><br/>
+	   
+	    In our case our customers allready have an Ext JS license an dare not willing to buy a license for a new product(Yes EXT JS and GXT are two different products. Even if they come from the same company).
+	   <br/><br/>
+	   
+	   Now what does Ext4j has to offer ? let s look at some of the features <br/><br/>
+	   
+	   - <span class="emph">100% implementation of EXT JS API</span><br/><br/>
+	   Starting with EXT JS 4.1 Ext4j aims to support all the features of EXT and add even more stuff that native JavaScript development can not provide
+	   
+	    - <span class="emph">Strong typing and compile time errors</span><br/><br/>
+	    
+	    This is pretty obvious. Because we leverage Java you get all the goodies of Java development and that for free!
+	    The API is simple and easy to read for any one.<br/>
+<textarea name="code" class="java:nocontrols" rows="15" cols="50">	
+Button button = new Button("Ext Button");
+button.setScale(ButtonScale.LARGE);
+button.setXY(100, 100);
+button.addClickHandler(new InteractionHandler() {
+    @Override
+    public void onEvent(Button button, EventObject event) {
+                Window.alert("Button was clicked !");
+   }
+});  
+</textarea><br/> 
+
+
+	    - <span class="emph">Declarative User Interface (a.k.a UI Binders)</span><br/><br/>
+	    
+	   Let's face Java is pretty verbose and one can end up writing a lot of code to layout the UI. That s why Ext4j introduced support for <span class="emph">GWT UI Binders</span>.
+	   UI binders give the ability the layout the UI in a more declarative way. 
+<textarea name="code" class="java:nocontrols" rows="15" cols="50">	
+	<x:TabPanel  height="500px" width="800px" activeTab="1">
+		 <x:Panel title="Chart Panel" closable="true" layout="fit">
+	          <x:ToolBar>
+				  <x:ToolBarFill/>
+	              <x:Button text="Reload Data" ui:field="button" />
+	          </x:ToolBar>
+	          <x:Chart ui:field="chart"/>
+	      </x:Panel>
+	      <x:Panel title="DatePicker" closable="false" bodyPadding="10" layout="vbox" >
+	      		<x:DatePicker/>
+	      		<x:Button text="Ext Button"/>
+				<x:Slider increment="5" minValue="0" maxValue="100" width="200px"/>
+	      </x:Panel>
+	</x:TabPanel>  
+</textarea><br/> 
+
+
+ Think about how you would write the same code in Java or in JavaScrit. Plus a designer will understand this code better than the 
+ Java or JavaScript version of it. <br/><br/>
+
+  - <span class="emph">Easy (JEE) backend Integration</span><br/><br/>
+ Because Ext4j leverage to Google Web Toolkit. Integrating any type of backend is a piece of cake. But if your backend is Java 
+ then you will love Ext4j. GWT provides machanisms to directly call Java methods frm within you client side code. No need of Ext Direct 
+ or anything like that.<br/><br/>
+ 
+  - <span class="emph">Free to use</span><br/><br/>
+ Ex4j is <span class="emph">free to use</span> with an <span class="emph">Apache 2 license</span>. Keep in mind that EXT JS is not free though. You will need a commercial license if you 
+ are building a commercial application.<br/><br/>
+ 
+ - <span class="emph">A lot more ...</span><br/><br/>
+ We just scrathed the surface here. Ext4j offers a lot more feature and we do have lot in the pipeline for the coming releases.
+ To see what s possible with Ext4j have a look at the - <span class="emph">examples section</span>. By the way this application 
+ itself is written using Extj4 :)
+	   
+	 </p>
+	 <p class="doc_text">
+	    To see how to get started with Ext4j click  <a  href="#Ext4j_Doc_Getting_Started">here</a><br/>
+	 	For more information about the Google Web Toolkit  please visit: <a target="_blank" href="https://developers.google.com/web-toolkit/">The GWT WebSite</a><br/>
+		For more information about Sencha  please visit: <a target="_blank" href="http://www.sencha.com/">Sencha.com</a><br/>
+	 </p>
+</div>

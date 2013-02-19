@@ -1,0 +1,110 @@
+<div class="doc_content">
+	<h2 class="title">Getting started with Ext4j</h2>
+	
+	<p class="doc_text">
+		The following  steps will walk you through creating a simple <span class="emph">Hello World app </span> with Ext4j.
+		<br/>
+		To see which software components are required to get started with the library refer to the <a href="#Ext4j_Doc_Requirements">Ext4j requirements</a> entry.<br/><br/>
+		Let s get started.
+	</p>
+	<p class="doc_text">
+		- 1) Create a new Web Application Project (GWT) project in your IDE (We will be using Eclipse with the Google Plugin for Eclipse). Enter your project's details as appropriate. <br/><br/>
+		  <img  src="imgs/ext4j_start.jpg" />
+	 </p>
+	 <p class="doc_text">
+		- 2) Add the  <span class="emph">ext4j-xxx.jar</span> file to the project's classpath.
+	 </p>
+	 <p class="doc_text">
+		- 3) Download the  <span class="emph">Ext JS library</span> and copy it into the war folder of your project<br/><br/>
+	      <img  src="imgs/ext4j_war.jpg" />
+	 </p>
+	 <p class="doc_text">
+		- 4) Modifiy the index.html file of your project to <span class="emph">reference the Ext JS library</span><br/><br/>
+	      <img  src="imgs/ext4j_index.jpg" /><br/>
+		  Note that we are using the gray theme here.
+	 </p>
+	 <p class="doc_text">
+		- 5) Edit the <span class="emph">.gwt.xml file</span> of your project to inherit the <span class="emph">Ext4j Module</span> <br/><br/>
+<textarea name="code" class="java:nocontrols" rows="15" cols="50">
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='ext4jexplorer'>
+  <inherits name='com.nttdata.ext4j.Ext'/> 
+  
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='com.nttdata.helloext.client.HelloExt'/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  <source path='shared'/>
+
+</module>	
+
+</textarea>
+	 </p>
+	 <p class="doc_text">
+		- 6) Modify the EntryPoint of your GWT application to extend <span class="emph">com.nttdata.ext4j.client.core.ExtEntryPoint</span> <br/><br/>
+<textarea name="code" class="java:nocontrols" rows="15" cols="50">	
+package com.nttdata.helloext.client;
+
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+
+/**
+ * Entry point classes define <code>onLoad()</code>.
+ */
+public class HelloExt extends ExtEntryPoint {
+    @Override
+    public void onLoad() {
+
+    }
+
+}	      
+	 </p>
+	 <p class="doc_text">
+		- 7) Now that everything is set let s write some code  <br/><br/>
+<textarea name="code" class="java:nocontrols" rows="15" cols="50">	
+package com.nttdata.helloext.client;
+
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.DatePicker;
+import com.nttdata.ext4j.client.ui.MessageBox;
+import com.nttdata.ext4j.client.ui.Panel;
+import com.nttdata.ext4j.client.ui.Viewport;
+
+/**
+ * Entry point classes define <code>onModuleLoad()</code>.
+ */
+public class HelloExt extends ExtEntryPoint {
+    @Override
+    public void onLoad() {
+
+        Panel panel = new Panel("Ext Panel");
+        panel.setCollapsible(true);
+        panel.setWidth(400);
+        panel.setDraggable(true);
+        panel.setResizable(true);
+        panel.setXY(200, 200);
+        panel.setFrame(true);
+        panel.setBodyPadding(10);
+        panel.add(new DatePicker());
+        panel.addButtons(new Button("Click Me", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                MessageBox.info("NTT Data", "Ext and Java for the win !");
+            }
+        }));
+
+        Viewport.get().add(panel);
+    }
+
+}
+</textarea>
+	 </p>
+	 <p class="doc_text">
+		- 8) And below is the result  <br/><br/>
+	      <img  src="imgs/ext4j_result1.jpg" />
+		  <img  src="imgs/ext4j_result2.jpg" />
+	 </p>
+</div>

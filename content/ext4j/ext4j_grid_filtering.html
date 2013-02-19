@@ -1,0 +1,121 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.data.BaseModel;
+import com.nttdata.ext4j.client.data.Store;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.grid.column.CellMetaData;
+import com.nttdata.ext4j.client.grid.column.GridColumn;
+import com.nttdata.ext4j.client.grid.column.GridColumnRenderer;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.DataView;
+import com.nttdata.ext4j.client.ui.GridPanel;
+import com.nttdata.ext4j.client.ui.Viewport;
+import com.nttdata.ext4j.explorer.client.data.DataUtil;
+import com.nttdata.ext4j.explorer.client.data.DataUtil.Company;
+import com.nttdata.ext4j.ux.grid.filterfeatures.client.BooleanFilter;
+import com.nttdata.ext4j.ux.grid.filterfeatures.client.DateFilter;
+import com.nttdata.ext4j.ux.grid.filterfeatures.client.GridFilterFeature;
+import com.nttdata.ext4j.ux.grid.filterfeatures.client.NumericFilter;
+
+public class Demo extends ExtEntryPoint {
+
+    @Override
+    public void onLoad() {
+
+        Store store = new Store(DataUtil.getCompanyList());
+        store.setSorter(DataUtil.Company.COMPANY_NAME);
+
+        final GridPanel grid = new GridPanel(store);
+        grid.setHeight(350);
+        grid.setWidth(600);
+        grid.setTitle("Grid Filter example");
+        grid.setCollapsible(true);
+        grid.setFrame(true);
+        grid.setResizable(true);
+        grid.setDraggable(true);
+        grid.setMultiSelect(true);
+        grid.setXY(100, 100);
+        grid.setFeatures(new GridFilterFeature());
+
+        GridColumn column = new GridColumn("Id", DataUtil.Company.ID);
+        column.setWidth(30);
+        column.setFilter(new NumericFilter());
+        grid.addColumn(column);
+
+        column = new GridColumn("Company", DataUtil.Company.COMPANY_NAME);
+        column.setFlex(1);
+        column.setFilterable(true);
+        grid.addColumn(column);
+
+        column = new GridColumn("Price", DataUtil.Company.PRICE);
+        column.setSortable(true);
+        column.setWidth(75);
+        column.setFilter(new NumericFilter());
+        // column.setRenderer("usMoney");
+        grid.addColumn(column);
+
+        column = new GridColumn("Change", DataUtil.Company.CHANGE);
+        column.setSortable(true);
+        column.setWidth(75);
+        column.setRenderer(new GridColumnRenderer() {
+
+            @Override
+            public String onRender(String value, CellMetaData metadata, BaseModel record, int rowIndex, int colIndex,
+                            Store store, DataView view) {
+                if (Double.valueOf(value) > 0) {
+                    return "<span style='color:green;'>" + value + "</span>";
+                } else if (Double.valueOf(value) < 0) {
+                    return "<span style='red;'>" + value + "</span>";
+                }
+                return value;
+            }
+        });
+        grid.addColumn(column);
+
+        column = new GridColumn("% Change", Company.CHANGE_IN_PERCENT);
+        column.setSortable(true);
+        column.setWidth(75);
+        column.setRenderer(new GridColumnRenderer() {
+            @Override
+            public String onRender(String value, CellMetaData metadata, BaseModel record, int rowIndex, int colIndex,
+                            Store store, DataView view) {
+                if (Double.valueOf(value) > 0) {
+                    return "<span style='color:green;'>" + value + "%</span>";
+                } else if (Double.valueOf(value) < 0) {
+                    return "<span style='red;'>" + value + "%</span>";
+                }
+                return value;
+            }
+        });
+        grid.addColumn(column);
+
+        column = new GridColumn("Last Updated", Company.LAST_UPDATE);
+        column.setSortable(true);
+        column.setWidth(75);
+        column.setFilter(new DateFilter());
+        grid.addColumn(column);
+
+        grid.renderColumns();
+        grid.addButtons(new Button("Add Column", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                GridColumn c = new GridColumn("Visible", DataUtil.Company.VISIBLE);
+                c.setFilter(new BooleanFilter());
+                grid.getHeaderContainer().add(c);
+                grid.getView().refresh();
+                button.setDisabled(true);
+            }
+        }));
+        Viewport.get().add(grid);
+
+    }
+
+}
+</textarea>
