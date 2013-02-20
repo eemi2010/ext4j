@@ -1,0 +1,181 @@
+<textarea name="code" class="java:nocontrols" rows="15" cols="100">	
+/**
+ * Ext4j - Ext JS for Java
+ * https://github.com/eemi2010/ext4j
+ */
+package com.nttdata.ext4j.explorer.client;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.nttdata.ext4j.client.core.EventObject;
+import com.nttdata.ext4j.client.core.Ext;
+import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.nttdata.ext4j.client.core.config.Dock;
+import com.nttdata.ext4j.client.data.BaseModel;
+import com.nttdata.ext4j.client.data.Store;
+import com.nttdata.ext4j.client.data.TableItem;
+import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
+import com.nttdata.ext4j.client.events.handlers.table.SelectionChangeHandler;
+import com.nttdata.ext4j.client.grid.column.DateGridColumn;
+import com.nttdata.ext4j.client.grid.column.GridColumn;
+import com.nttdata.ext4j.client.grid.column.GridColumnEditor;
+import com.nttdata.ext4j.client.grid.column.NumberGridColumn;
+import com.nttdata.ext4j.client.grid.plugin.RowEditing;
+import com.nttdata.ext4j.client.selection.SelectionModel;
+import com.nttdata.ext4j.client.ui.Button;
+import com.nttdata.ext4j.client.ui.GridPanel;
+import com.nttdata.ext4j.client.ui.ToolBar;
+import com.nttdata.ext4j.client.ui.Viewport;
+import com.nttdata.ext4j.client.ui.form.field.DateField;
+import com.nttdata.ext4j.client.ui.form.field.NumberField;
+import com.nttdata.ext4j.client.ui.form.field.VTypes;
+
+public class Demo extends ExtEntryPoint {
+
+    public static final String TITLE = "Grid Row Editing";
+
+    private String[] names = new String[] { "Jones", "Smith", "Lee", "Wilson", "Black", "Williams", "Lewis", "Johnson",
+                    "Foot", "Little", "Vee", "Train", "Hot", "Mutt" };
+
+    private String[] surnames = new String[] { "Fred", "Julie", "Bill", "Ted", "Jack", "John", "Mark", "Mike", "Chris",
+                    "Bob", "Travis", "Kelly", "Sara" };
+
+    private boolean[] active = new boolean[] { true, false };
+    private Store store;
+    private RowEditing rowEditing = new RowEditing(2);
+
+    @Override
+    public void onLoad() {
+        store = new Store(generateEmployees());
+
+        final GridPanel grid = new GridPanel(store);
+        grid.setHeight(350);
+        grid.setWidth(600);
+        grid.setTitle("Employee Salaries");
+        grid.setCollapsible(true);
+        grid.setFrame(true);
+        grid.setResizable(true);
+        grid.setDraggable(true);
+        grid.setMultiSelect(true);
+        grid.setXY(100, 100);
+        grid.setPlugins(rowEditing);
+
+        GridColumn column = new GridColumn("Name", "name");
+        column.setFlex(1);
+
+        GridColumnEditor editor = new GridColumnEditor();
+        editor.setAllowBlank(false);
+        editor.setVType(VTypes.EMAIL);
+        column.setEditor(editor);
+        grid.addColumn(column);
+
+        column = new GridColumn("Email", "email");
+        column.setWidth(160);
+
+        editor = new GridColumnEditor();
+        editor.setAllowBlank(false);
+        editor.setVType(VTypes.EMAIL);
+        column.setEditor(editor);
+        grid.addColumn(column);
+
+        DateGridColumn dateColumn = new DateGridColumn("Start", "start");
+        dateColumn.setWidth(90);
+
+        DateField df = new DateField();
+        df.setAllowBlank(false);
+        df.setFormat("m/d/y");
+        df.setMinValue("01/01/1995");
+        df.setMinText("Cannot have a start date before the company existed!");
+        dateColumn.setEditor(df);
+        grid.addColumn(dateColumn);
+
+        NumberGridColumn numberColumn = new NumberGridColumn("Salary", "salary");
+        numberColumn.setFormat("$0,0");
+        numberColumn.setWidth(90);
+
+        NumberField nf = new NumberField();
+        nf.setAllowBlank(false);
+        nf.setMinValue(1);
+        // nf.setMaxValue(15000);
+        numberColumn.setEditor(nf);
+        grid.addColumn(numberColumn);
+
+        /**
+         * CheckColumn checkColumn = new CheckColumn("Active", "active");
+         * checkColumn.setWidth(60); checkColumn.setEditor(new CheckBox());
+         * grid.addColumn(checkColumn);
+         */
+
+        grid.renderColumns();
+
+        ToolBar tb = new ToolBar(Dock.TOP);
+        Button addButton = new Button("Add Employee", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                BaseModel employee = new BaseModel();
+                employee.set("name", "New Guy");
+                employee.set("email", "new@nttdata-test.com");
+                employee.set("start", "01/01/2013");
+                employee.set("active", true);
+                employee.set("salary", "50000");
+                store.insert(0, employee);
+                rowEditing.startEdit();
+
+            }
+        });
+        addButton.setIcon("imgs/add-user.png");
+        tb.add(addButton);
+
+        final Button delButton = new Button("Delete Employee", new InteractionHandler() {
+            @Override
+            public void onEvent(Button button, EventObject event) {
+                rowEditing.cancelEdit();
+                SelectionModel sm = grid.getSelectionModel();
+                store.remove(sm.getSelection());
+                if (store.getCount() > 0) {
+                    sm.select(0);
+                }
+
+            }
+        });
+        delButton.setIcon("imgs/del-user.png");
+        delButton.setDisabled(true);
+        tb.add(delButton);
+        grid.addDocked(tb);
+        grid.addSelectionChangeHandler(new SelectionChangeHandler() {
+            @Override
+            public void onEvent(SelectionModel selectionModel, List<TableItem> records) {
+                if (store.getCount() > 0) {
+                    delButton.setDisabled(false);
+                } else {
+                    delButton.setDisabled(true);
+                }
+            }
+        });
+
+        Viewport.get().add(grid);
+    }
+
+    private List<BaseModel> generateEmployees() {
+        List<BaseModel> values = new ArrayList<BaseModel>();
+        int nameLength = this.names.length;
+        int surnameLenght = this.surnames.length;
+        String name;
+        for (int i = 0; i < 50; i++) {
+            name = this.names[Ext.randomInt(0, nameLength - 1)] + " "
+                            + this.surnames[Ext.randomInt(0, surnameLenght - 1)];
+            BaseModel employee = new BaseModel();
+            employee.set("name", name);
+            employee.set("email", name.toLowerCase().replace(" ", ".") + "@nttdata-test.com");
+            employee.set("start", "01/01/2013");
+            employee.set("active", this.active[Ext.randomInt(0, this.active.length - 1)]);
+            employee.set("salary", Math.floor(Ext.randomInt(35000, 85000) / 1000) * 1000);
+            values.add(employee);
+        }
+
+        return values;
+    }
+
+}
+</textarea>
