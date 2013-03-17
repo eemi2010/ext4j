@@ -148,7 +148,7 @@ div.jqDockLabel {
 /* Desktop Wall */
 .ux-desktop-shortcut {
     cursor: pointer;
-    text-align: center
+    text-align: center;
 }
 
 .ux-desktop-shortcut-icon{
@@ -184,4 +184,9 @@ div.jqDockLabel {
 .ux-desktop-shortcut-selected .ux-desktop-shortcut-icon{
 	background: gray;
     border:1px solid #99bbe8;
+}
+
+.ux-desktop-shortcut-hover{
+	background: gray;
+    border:2px solid #99bbe8;
 }
