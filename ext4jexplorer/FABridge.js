@@ -262,9 +262,19 @@ FABridge.prototype =
 //create a new AS Object
     create: function(className)
     {
+    var toReturn;
 	var args = FABridge.argsToArray(arguments);
 	args.shift();
-        return this.deserialize(this.target.create(className, this.serialize(args)));
+	
+	 try{
+		 toReturn = this.deserialize(this.target.create(className, this.serialize(args)));
+	 }
+	 catch(e){
+		 toReturn = this.deserialize(this.target.create(className));
+	 }
+	 return toReturn;
+        //return this.deserialize(this.target.create(className, this.serialize(args)));
+        //return this.deserialize(this.target.create(className));
     },
 
 //get a Reference to a Class Definition (not an instance of the object)
