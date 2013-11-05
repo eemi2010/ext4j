@@ -1,0 +1,19 @@
+#dock div.jqDockWrap {
+	margin:0 auto;
+}
+/*...set the cursor...*/
+#dock div.jqDock {
+	cursor:pointer; 
+	border: solid 2px #99bbe8; 
+	background: gray;
+}
+div.jqDockLabel {
+	
+	font-weight:bold;
+	font-style:italic;
+	white-space:nowrap;
+	color:white;
+    cursor:pointer;
+    text-align:center;
+    padding:0 1px;
+}

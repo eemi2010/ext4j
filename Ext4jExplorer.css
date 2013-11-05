@@ -85,39 +85,6 @@ div.doc_content{
 }
 
 
-.ux-notification-window .x-window-body {
-	text-align: center;
-	padding: 15px 5px 15px 5px;
-	width: 200px;
-}
-
-
-
-.ux-notification-light .x-window-header {
-	background-color: transparent;
-}
-
-body .ux-notification-light {
-	background-image: url('ext4jexplorer/fader.png');
-}
-
-.ux-notification-light .x-window-body {
-	text-align: center;
-	padding: 15px 5px 18px 5px;
-	width: 200px;
-	background-color: transparent;
-	border: 0px solid white;
-}
-
-
-.ux-notification-icon-information {
-	background-image: url('ext4jexplorer/icon16_info.png');
-}
-
-.ux-notification-icon-error {
-	background-image: url('ext4jexplorer/icon16_error.png');
-}
-
 
 .new-tab {
     background-image:url(imgs/panel.png ) !important;
@@ -129,64 +96,5 @@ body .ux-notification-light {
 
 
 
-/** Add css rules here for your application. */
 
 
-#dock div.jqDockWrap {margin:0 auto;}
-/*...set the cursor...*/
-#dock div.jqDock {cursor:pointer; border: solid 2px #99bbe8; background: gray;}
-div.jqDockLabel {
-	font-weight:bold;
-	 font-style:italic;
-	  white-space:nowrap;
-	   color:white;
-       cursor:pointer;
-        text-align:center;
-         padding:0 1px;
-}
-
-/* Desktop Wall */
-.ux-desktop-shortcut {
-    cursor: pointer;
-    text-align: center;
-}
-
-.ux-desktop-shortcut-icon{
-	padding:10px;
-}
-
-.ux-desktop-shortcut-icon {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    margin: 5px;
-    padding:5px;
-}
-
-.ux-desktop-shortcut-text {
-    font: normal 10px tahoma,arial,verdana,sans-serif;
-    text-decoration: none;
-    margin-top: -15px;
-    color: white;
-}
-
-
-.ux-desktop-shortcut-selected{
-	
-}
-
-
-.ux-desktop-shortcut-selected .ux-desktop-shortcut-text{
-	font-weight: bold;
-	font-style: italic;
-	text-decoration: underline;
-}
-
-.ux-desktop-shortcut-selected .ux-desktop-shortcut-icon{
-	background: gray;
-    border:1px solid #99bbe8;
-}
-
-.ux-desktop-shortcut-hover{
-	background: gray;
-    border:2px solid #99bbe8;
-}
