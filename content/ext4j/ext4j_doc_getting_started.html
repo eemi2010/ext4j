@@ -37,10 +37,10 @@
 <textarea name="code" class="java:nocontrols" rows="15" cols="50">
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='ext4jexplorer'>
-  <inherits name='com.nttdata.ext4j.Ext'/> 
+  <inherits name='com.eemi.ext4j.Ext'/> 
   
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.nttdata.helloext.client.HelloExt'/>
+  <entry-point class='com.eemi.helloext.client.HelloExt'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
@@ -51,11 +51,11 @@
 </textarea>
 	 </p>
 	 <p class="doc_text">
-		- 6) Modify the EntryPoint of your GWT application to extend <span class="emph">com.nttdata.ext4j.client.core.ExtEntryPoint</span> <br/><br/>
+		- 6) Modify the EntryPoint of your GWT application to extend <span class="emph">com.eemi.ext4j.client.core.ExtEntryPoint</span> <br/><br/>
 <textarea name="code" class="java:nocontrols" rows="15" cols="50">	
-package com.nttdata.helloext.client;
+package com.eemi.helloext.client;
 
-import com.nttdata.ext4j.client.core.ExtEntryPoint;
+import com.eemi.ext4j.client.core.ExtEntryPoint;
 
 /**
  * Entry point classes define <code>onLoad()</code>.
@@ -72,16 +72,16 @@ public class HelloExt extends ExtEntryPoint {
 	 <p class="doc_text">
 		- 7) Now that everything is set let s write some code  <br/><br/>
 <textarea name="code" class="java:nocontrols" rows="15" cols="50">	
-package com.nttdata.helloext.client;
+package com.eemi.helloext.client;
 
-import com.nttdata.ext4j.client.core.EventObject;
-import com.nttdata.ext4j.client.core.ExtEntryPoint;
-import com.nttdata.ext4j.client.events.handlers.button.InteractionHandler;
-import com.nttdata.ext4j.client.ui.Button;
-import com.nttdata.ext4j.client.ui.DatePicker;
-import com.nttdata.ext4j.client.ui.MessageBox;
-import com.nttdata.ext4j.client.ui.Panel;
-import com.nttdata.ext4j.client.ui.Viewport;
+import com.eemi.ext4j.client.core.EventObject;
+import com.eemi.ext4j.client.core.ExtEntryPoint;
+import com.eemi.ext4j.client.events.handlers.button.InteractionHandler;
+import com.eemi.ext4j.client.ui.Button;
+import com.eemi.ext4j.client.ui.DatePicker;
+import com.eemi.ext4j.client.ui.MessageBox;
+import com.eemi.ext4j.client.ui.Panel;
+import com.eemi.ext4j.client.ui.Viewport;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
