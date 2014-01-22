@@ -1,27 +1,607 @@
-<!doctype html>
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link type="text/css" rel="stylesheet" href="Ext4jExplorer.css">
-	<link rel="stylesheet" href="./syntaxhighlighter/Styles/SyntaxHighlighter.css" type="text/css" />
-	<!-- link type="text/css" rel="stylesheet" href="./4.2/resources/css/ext-all-neptune-debug.css" /--> 
-	<!--  link type="text/css" rel="stylesheet" href="./4.2/resources/ext-theme-gray/ext-theme-gray-all.css" /-->  
-	<!--  link type="text/css" rel="stylesheet" href="./4.2/steelblue/ext-theme-steelblue-all.css" /--> 
-	
-	<!--  script type="text/javascript" src="./4.2/ext-theme-neptune.js"></script-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ext4j - Ext JS for the Java Platform</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<!--  Parallax slider stylesheet -->
+<link rel="stylesheet" href="css/cslider.css">
+<!--  Theme: black -->
+<link rel="stylesheet" href="css/black.css">
+<!--  Lightbox gallery  -->
+<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen">
+<!--  Syntax highlighting theme  -->
+<link rel="stylesheet" href="css/rainbow-syntax-colors.css" type="text/css">
+<!--  Meta  -->
+<meta name="description" content="Ext4j: Sencha's Ext JS for the Java Platform">
+<meta name="author" content="Alain Ekambi">
+<!--  Favicon -->
+<link rel="Shortcut Icon" href="favicon.ico">
+<!--  HTML5 for older browsers -->
+<script src="js/modernizr-1.6.min.js"></script>
+<!--  Device viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="css/style.css">
+
+ <script src="//static.getclicky.com/js" type="text/javascript"></script>
+ <script type="text/javascript">try{ clicky.init(66582497); }catch(e){}</script>
+
+</head>
+<body>
+  <svg id="body-glow"></svg>
+  <div class="container" id="main-container">
+    <!--  Header -->
+    <header>
+      <!--  Slider & Product area -->
+      <section id="teaser">
+        <!--  Slider -->
+        <div id="da-slider" class="da-slider">
+          <a href="https://github.com/eemi2010/ext4j" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 100" src="images/forkme.png" alt="Fork me on GitHub"></a>
+          <div class="da-slide">
+            <br>
+
+            <h2>
+              <b>Ext4j:</b> Sencha's Ext JS for the Java Platform
+            </h2>
+            <br>
+
+            <div class="da-img">
+              <img src="images/ext4j.png" style="padding-top: 30px" alt="Errai Icon" class="hidden-phone" />
+            </div>
+          </div>
+          <div class="da-slide">
+            <h2>Simple, Familiar, Powerful API</h2>
+
+            <pre data-language=java>
 
 
-    <script src="//static.getclicky.com/js" type="text/javascript"></script>
-    <script type="text/javascript">try{ clicky.init(66582497); }catch(e){}</script>
+        Button button = new Button("Ext Button");
+        button.setScale(ButtonScale.LARGE);
+        button.setXY(100, 100);
+        button.setIcon("user.png");
+        button.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                Window.alert(event.getSource().getText());
+            }
+        });
 
-	 <script  src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-	 <script src="./syntaxhighlighter/Scripts/shCore.js"></script>
-	 <script src="./syntaxhighlighter/Scripts/shBrushJava.js"></script>
-	  <script type="text/javascript"  src="ext4jexplorer/ext4jexplorer.nocache.js"></script>
-	 
-	 <title>Ext4j - Ext for Java Explorer</title>
-  </head>
-  <body>
-    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
-  </body>
+            </pre>
+          </div>
+          <div class="da-slide">
+            <h2>Declarative User Interface</h2>
+            <pre data-language=html>
+  
+&lt;x:Panel ui:field="mainPanel"
+  title="Declarative UI for Ext JS"
+  width="400"
+  height="400"
+  x="400"
+  y="50"
+  draggable="true"
+  collapsible="true"&gt;
+           
+     &lt;x:Button ui:field="myButton" text="Click Me"  x="100" y="100" /&gt;
+
+&lt;/x:Panel&gt;
+  
+
+
+            </pre>
+          </div>
+
+                 <div class="da-slide">
+            <h2>Built-In MVP Support</h2>
+            <pre data-language=java>
+public class LoginPanel extends Composite {
+   ........
+    
+    @UiField
+    Button loginButton;
+
+    public LoginPanel() {
+        initWidget(uiBinder.createAndBindUi(this));
+    }
+     ........
+   
+    @UiHandler("loginButton")
+    void handleClick(ClickEvent event) {
+        logger.log(Level.INFO, event.getSource().getText());
+    }
+
+}
+
+            </pre>
+          </div>
+
+          <div class="da-slide">
+            <h2>Real Software Engineering Practices</h2>
+            <pre data-language=java>
+
+public class DesktopModuleWindow extends Window {
+
+    private double initialWidth;
+   
+    public DesktopModuleWindow() {
+        
+        this.setConstrainHeader(true);
+        this.setClosable(true);
+        this.setMaximizable(true);
+        this.setMinimizable(true);
+        this.setSize(500, 500);
+        this.setShadow(false);
+
+        .......
+
+      }
+
+}
+
+
+            </pre>
+          </div>
+   
+          <div class="da-slide">
+            <h2>Typesafe RPC and AJAX Client</h2>
+            <pre data-language=java>
+
+RequestBuilder req = new RequestBuilder(RequestBuilder.GET, "index.php");
+try {
+      panel.getEl().unmask("Loading Data ...");
+      req.sendRequest("", new RequestCallback() {
+      @Override
+      public void onResponseReceived(Request request, Response response) {
+        panel.setHtml(response.getText());
+        panel.getEl().unmask();
+      }
+
+      @Override
+      public void onError(Request request, Throwable exception) {
+        panel.setHtml("No content found");
+        panel.getEl().unmask();
+      }
+    });
+} 
+.....
+
+            </pre>
+          </div>
+    <div class="da-slide">
+            <br>
+
+            <h2>
+              First class Tooling Support
+            </h2>
+            <br>
+
+            <div class="da-img">
+              <img src="images/ide.jpg"  />
+            </div>
+          </div>
+
+     <div class="da-slide">
+            <br>
+
+            <h2>
+              Amazing Results
+            </h2>
+            <br>
+
+            <div class="da-img">
+              <img src="images/explorer.png"   style="border: none;"/>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!--  Tagline -->
+      <section id="tagline">
+        <div id="left-ear"></div>
+        <h2 class="hidden-phone">
+          Build amazing <b>web applications</b> now!
+        </h2>
+        <a class="btn btn-large btn-success" href="./dls/ext4j.1.0.0_beta.zip" target="_blank">Download Ext4j</a>
+          <span style="width:150px;">&nbsp;</span>
+          <a class="btn btn-large btn-success" href="explorer/index.html" target="_blank">See Ext4j in Action</a>
+
+        <div id="right-ear"></div>
+      </section>
+    </header>
+    <div class="clear"></div>
+    <!--  Content -->
+    <div class="content">
+      <section id="content" class="row-fluid text-center">
+        <div class="span3 content-box">
+          <img src="images/icons/html5.png" alt="HTML5 templates">
+
+          <h3>Build on a Powerful Foundation</h3>
+
+          <p>Create standard conform HTML5 applications based on two of the best frameworks :  <a href="http://www.gwtproject.org/">GWT</a> and <a href="http://www.sencha.com/products/extjs/">Ext JS</a>.</p>
+        </div>
+          <div class="span3 content-box">
+          <img src="images/icons/lcd.png" alt="Boilerplate-free">
+
+          <h3>First class Tooling</h3>
+
+          <p>Leverage all the free and powerful tools available in the Java Ecosystem. Run and debug your code in the browser and your IDE.</p>
+        </div>
+        <div class="span3 content-box">
+          <img src="images/icons/cog.png" alt="Share Code">
+
+          <h3>Shared Code</h3>
+
+          <p>Share code between the client and the server. Reuse your data model, validation and business accross devices and platforms. Don't repeat yourself!</p>
+        </div>
+      
+
+        <div class="span3 content-box">
+          <img src="images/icons/bulb.png" alt="Open Source">
+
+          <h3>Open Source</h3>
+
+          <p>Join the Ext4j open source community! Ext4j is developed under the Apache License, Version 2.0.</p>
+        </div>
+      </section>
+
+
+      <div class="release-summary">
+        <div class="row-fluid">
+          <div class="span3 title">
+            Latest Release
+          </div>
+          <div class="span3 version-primary">
+            1.0.0 Beta
+          </div>
+          <div class="span6 details">
+            <p>Get to know the Ext4j library with this first release&nbsp;
+              <a class="btn btn-success" href="explorer/index.html#gettingStarted" target="_blank">Get Started</a>
+            </p>
+            <p><a href="https://github.com/eemi2010/ext4j" target="_blank">Source</a>             
+             | <a href="https://github.com/eemi2010/ext4j/releases/tag/1.0.0" target="_blank" >Release notes</a>
+             | <a href="https://github.com/eemi2010/ext4j/issues" target="_blank" >Forums</a>
+             | <a href="./javadocs" target="_blank">Docs</a>
+             | <a href="">Guides</a>
+            </p>
+          </div>
+        </div>
+        <hr>
+        <!--div class="row-fluid muted">
+          <div class="span3 offset3 version-other">
+            2.3.2.Final
+          </div>
+          <div class="span6 details">
+            <p>Upgrade any 2.3.x or older production systems to this release ASAP.<br>
+              Not recommended for new development.</p>
+            <p><a href="https://github.com/errai/errai/tree/2.3.2.Final">Source</a>
+             | <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.jboss.errai%22%20AND%20v%3A%222.3.2.Final%22">Binaries</a>             
+             | <a href="https://issues.jboss.org/issues/?jql=fixVersion%20%3D%20%222.3.2.Final%22%20AND%20project%20%3D%20ERRAI">Release notes</a>
+             | <a href="https://community.jboss.org/en/errai?view=discussions">Forums</a>
+             | <a href="http://docs.jboss.org/errai/2.3.2.Final/errai/reference/html_single/">Docs</a>
+            </p>
+          </div>
+        </div -->
+        <!--div class="row-fluid muted">
+          <div class="span3 offset3 version-other">
+            3.0-SNAPSHOT
+          </div>
+          <div class="span6 details">
+            <p>Live on the bleeding edge with up-to-the-minute features and fixes delivered continuously.</p>
+            <p><a href="https://github.com/errai/errai/tree/master">Source</a>
+             | <a href="https://repository.jboss.org/nexus/index.html#nexus-search;gav~org.jboss.errai~~3.0-SNAPSHOT~~">Binaries</a>
+             | <a href="https://issues.jboss.org/issues/?jql=project%20%3D%20ERRAI">Known Issues</a>
+             | <a href="https://community.jboss.org/en/errai?view=discussions">Forums</a>
+             | <a href="https://docs.jboss.org/author/display/ERRAI/Home">Docs</a>
+             | <a href="https://hudson.jboss.org/hudson/job/Errai/">CI Build</a>
+            </p>
+          </div>
+        </div-->
+      </div>
+
+
+
+          <div class="html5-summary">
+      <div class="row-fluid content-box">              
+        <h3 style="padding-left:10px">Simple, Familiar, Powerful Java API for Ext JS !</h3>
+        <p>
+           Simple and yet powerful: That's the goal of Ext4j. <br/>
+           This project aims to helps developers build awesome web basesd applications. For that Ext4j leverage two of the best frameworks on the market: <a href="http://www.gwtproject.org/">GWT</a> and <a href="http://www.sencha.com/products/extjs/">Ext JS</a>. Ext JS gives access to an amazing  desktop application development platform while GWT provides the <b>Java Ecosystem and all its free available tools</b>. With this combination we believe that you will get amazing results with an incredible productivity.
+        </p>
+
+        <div class=" row-fluid" style="margin-left:0px;">
+          <h5>MyApp.java</h5>   
+          <pre data-language=java style="background-color:#333;font-size:12px">
+package com.eemi.ext4jdemo.client;
+
+import com.eemi.ext4j.client.core.ExtEntryPoint;
+import com.eemi.ext4j.client.layout.Layout;
+import com.eemi.ext4j.client.ui.Panel;
+import com.eemi.ext4j.client.ui.TextArea;
+import com.eemi.ext4j.client.ui.Viewport;
+
+public class HelloExt extends ExtEntryPoint {
+
+    @Override
+    public void onLoad() {
+
+        Panel panel = new Panel("Ext Panel");
+        panel.setCollapsible(true);
+        panel.setSize(600, 600);
+        panel.setDraggable(true);
+        panel.setResizable(true);
+        panel.setXY(300, 100);
+        panel.setFrame(true);
+        panel.setBodyPadding(10);
+        panel.setLayout(Layout.FIT);
+
+        TextArea text = new TextArea();
+        panel.add(text);
+
+        Viewport.get().add(panel);
+
+    }
+} </pre>
+          <p style="padding-left:0px;">         
+           Because it leverages <b>GWT</b> and the <b>Java Platform</b> Ext4j will bring unique capabilities to your <b>Ext JS development</b> : <br/>
+           <ul>
+            <li>Strong typing : Catch errors at compile time rather than runtime.</li>
+            <li>IDE support at <b>no cost</b>: Use any Java IDE to develop, run, debug and test your application (off course you can still a text editor if you like).</li>
+            <li>Real Software Engineering practices(Encapsulation, Design pattern, Interface based design, etc...) out of the box.</li>
+            <li>Seamless integration with J2EE and other platforms.</li>
+            <li>Code reuse accross devices and platforms(share code between the web, the desktop, android , iOS and others).</li>
+             <li>Progressive enhancement of exsiting Ext JS Applications written with Javascript</li>
+            <li>Seamless integration with other GWT based libraries</b>
+            <li>Seamless integration between Ext JS and GWT widgets</b>
+            <li>And way more ...</li>
+           </ul>
+          </p>   
+        </div>
+     
+      </div>  
+    </div>
+
+      <hr/>
+
+
+          <div class="html5-summary">
+      <div class="row-fluid content-box">              
+        <h3 style="padding-left:10px">Declarative UIs for Ext JS !</h3>
+        <p>
+           Let's face it : Java is verbose. Writing the user interface in a swing like API can be really tedious as the application grows. This is why Ext4j introduces a <b>declarative way</b> to define the UI for Ext JS applications! Implement real <b>separarion of concern</b> by separating the view code with the view logic . The <b>.ui.xml</b> file just serves as a typesafe template(all errors will be caught at compile time). Each template file has a  companion Java class that provides access to the fields in the templates and implement the client-side logic.
+        </p>
+
+        <div class="span7 row-fluid" style="margin-left:0px;min-width:480px">
+          <h5>MyView.ui.xml</h5>   
+          <pre data-language=java style="background-color:#333;min-width:455px;font-size:12px">
+&lt;x:Panel title="My Panel"  width="500px" height="500px">
+      &lt;x:Button ui:field="myButton" xy="10, 10" text="Click Me" />
+&lt;/x:Panel>
+
+</pre>
+          <p style="padding-left:0px;max-width:455px">
+            Attaching an event handler requires just a single annotation and a method that handles the given event.
+          </p>   
+        </div>
+        <div class="span5 row-fluid" style="margin-left:0px">
+          <h5>MyView.java</h5>
+          <pre data-language=java style="background-color:#333;min-width:340px;font-size:12px">
+
+public class MyView extends Composite {
+  ....
+
+  @UiField 
+  Button myButton;
+
+  @UiHandler("myButton")
+  public void onSave(ClickEvent event) {    
+    MessageBox.alert("I was clicked");
+  }
+}         </pre>           
+        </div>    
+      </div>  
+    </div>
+   <hr>
+
+       <div class="html5-summary">
+      <div class="row-fluid content-box">              
+        <h3 style="padding-left:10px">Templates from HTML files!</h3>
+        <p>
+         Take an HTML file directly from your designer or brand team and use it in your application. No need to battle string concatenation when bringing in design changes. The HTML file will get parsed by Ext4j in a simple and yet powerful way.
+        </p>
+
+        <div class="span5 row-fluid" style="margin-left:0px; min-width:325px;">
+        <h5>myTemplate.html</h5>
+        <pre data-language=java style="background-color:#333;min-width:325px;font-size:12px">
+<div class="userProfile">
+  <div class="userName">
+   <span class="firstName">{firstName}</span>
+    <br/>
+    <span class="firstName">{firstName}
+  </div>
+  <div class="userAvatar">
+   <img src="{userPic}"  />
+  </div>
+</div>
+        </pre>         
+        </div>
+        <div class="span7 row-fluid" style="margin-left:0px;min-width:385px;">
+          <h5>UserTemplate.java</h5>
+          <div>
+            <pre data-language=java style="background-color:#333;min-width:385px;font-size:12px">
+@TemplateResource(source="myTemplate.html")
+interface UserTemplate extends Template{
+}
+        </pre>
+         <h5>MyApp.java</h5>
+            <pre data-language=java style="background-color:#333;min-width:475px;font-size:12px">
+public class MyApp extends ExtEntryPoint {
+@Override
+public void onLoad(){
+  ....
+  Store userStore = StoreManager.getUserStore();
+
+  Template template = (Template) GWT.create(UserTemplate.class);
+  String content =  template.getContent().asString();
+
+  DataView view = new DataView(userStore, content);
+
+  Window userWindow = new Window("User Profile");
+  userWindow.setLayout(Layout.FIT);
+  userWindow.add(view);
+  userWindow.show();
+
+  }
+}           </pre>
+          </div>         
+        </div>           
+      </div>  
+    </div>
+
+    <hr/>
+        <div class="html5-summary">
+      <div class="row-fluid content-box">              
+        <h3 style="padding-left:10px">Share code accross platforms and devices !</h3>
+        <p>
+           Ext4j is designed to enable developers to create a new generation of hybrid applications. In the spirit of open source we leverage projects like 
+          <a href="wwww.emitrom.com/lienzo">Lienzo (Rich Graphics toolkit for the web)</a>, <a href="wwww.emitrom.com/touch4j">Touch4j (Java API for Sencha Touch)</a>, <a href="wwww.emitrom.com/flash4j">Flash4j(Java API for Flash)</a> and <a href="wwww.emitrom.com/Titanium4j">Titanium4j (Java API for Titanium Mobile)</a> to help you bring even more capabilities in your Ext JS application and share code between the Desktop and mobile platforms.
+        </p>
+     
+      </div>  
+    </div>
+
+ <hr>
+      <!--div class="row-fluid block video-block">
+        <div class="span4 content-box">
+          <h3 class="video-box-title">Watch the quick start video →</h3>
+
+          <p class="subtitle">Your first steps with Ext4j</p>
+
+          <p>See how to build a hello worl application with Ext4j.</p> 
+          <Get the source code of this example from <a href="https://github.com/errai/errai/tree/master/errai-demos/errai-jpa-demo-todo-list">GitHub</a>.</p>
+        </div>
+        <div class="span8 flex-video widescreen vimeo">
+          <iframe src="http://player.vimeo.com/video/55454764" frameborder="0" webkitAllowFullScreen mozallowfullscreen
+            allowFullScreen></iframe>
+        </div>
+      </div-->
+      <!--hr-->
+    
+
+
+      <!--div class="row-fluid block video-block">
+        <div class="span4 content-box">
+          <h3 class="video-box-title">Watch our JavaOne 2013 session →</h3>
+
+          <p class="subtitle">Learn more about Errai</p>
+          <p>Rich HTML5 Web Apps: Typesafe Edition</p>
+          <p>Get the source code shown in this presentation from <a href="https://github.com/errai/errai-tutorial">GitHub</a>
+        </div>
+        <div class="span8 flex-video widescreen">
+          <iframe type="text/html" width="420" height="290" mozallowfullscreen="true" webkitallowfullscreen="true" src="http://parleys.com/share.html#play/524f4071e4b0a43ac1212399" frameborder="0">&lt;br /&gt;</iframe>
+        </div>
+      </div-->
+
+      <!--div class="row-fluid block video-block">
+        <div class="span4 content-box">
+          <h3 class="video-box-title">Watch our JavaOne 2012 session →</h3>
+
+          <p class="subtitle">Learn more about Errai</p>
+          <p>Taming the Spaghetti: Rich Web Application with Errai.</p>
+          <p></p>
+        </div>
+        <div class="span8 flex-video widescreen">
+          <iframe src="http://www.youtube.com/embed/rz2X667Wk_4" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div-->
+    </div>
+    <!--  Footer -->
+    <footer>
+      <div id="howto-panels">
+        <p>
+          Follow our <a class="howto-link" href="explorer/index.html#gettingStarted" target="_blank">step-by-step guide</a> and make your first
+          Ext4j project!
+        </p>
+      </div>
+      <!--div id="large-footer" class="row-fluid">
+        <div class="span4 footer-box">
+          <div class="footer-box-inner">
+            <h5>Community</h5>
+            <h6>We love pull requests!</h6>
+
+            <p>Looking for a fun, open community project to get involved in? Well look no further than Errai! We
+              love when somebody with a great idea puts it into code and hashes out the details with us. We've got a
+              long track record of working with community contributors to get their great work into the framework.
+              Everybody wins!</p>
+
+            <p>
+             <a class="footer-link" href="http://github.com/errai/errai">Fork the code on Github</a> and get started today!
+            </p>
+
+            <h6>Join the Conversation</h6>
+            <p>
+              Not ready to fork &amp; modify just yet? No problem! Let's talk!
+
+            <ul>
+              <li><a class="footer-link" href="https://community.jboss.org/en/errai?view=discussions">Community forum</a>
+                 – get unstuck
+              <li><a class="footer-link" href="https://lists.jboss.org/mailman/listinfo/errai-dev">errai-dev</a>
+                 – discuss big changes
+              <li><a class="footer-link" href="irc://irc.freenode.net/errai">#errai on freenode.net</a>
+                 – chat on IRC
+              <li><a class="footer-link" href="http://jira.jboss.org/browse/ERRAI">Issue Tracker</a>
+                 – report &amp; track issues
+            </ul>
+            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
+          </div>
+        </div>
+        <div class="span4 footer-box">
+          <div class="footer-box-inner">
+            <h5>Latest tweets</h5>
+            <a class="twitter-timeline" href="https://twitter.com/jbosserrai" data-widget-id="349985295057436672">Tweets
+              by @jbosserrai</a>
+          </div>
+        </div>
+        <div class="span4 footer-box">
+          <div class="footer-box-inner">
+            <h5>Blog</h5>
+            <div id = "feed"></div>
+          </div>
+          <div class="footer-box-inner">
+            <h5>About</h5>
+            <p>
+              Errai is a project of the <a class="footer-link" href="http://www.jboss.org">JBoss Community</a>, and is
+              distributed under the <a class="footer-link" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+                License version 2.0.</a>
+            </p>
+          </div>
+        </div>
+      </div-->
+    </footer>
+  </div>
+  <br class="spacer">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span12 text-center">
+        This page was forked from the <a href="http://erraiframework.org/" target="_blank">Errai Framework Homepage</a>
+        <!--a href="http://www.redhat.com/"><img src="images/redhat_logo.png" style="padding-right: 10px"></a>
+        <a href="http://www.jboss.org/"><img src="images/jboss_redhat_branding.png"></a-->
+      </div>
+    </div>
+  </div>
+  <br class="spacer">
+
+ 
+
+  <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+  <script src="js/jquery.cslider.js" type="text/javascript"></script>
+  <script src="js/jquery.prettyPhoto.js" type="text/javascript"></script>
+  <script src="js/common.js" type="text/javascript"></script>
+  <script src="js/rainbow.js" type="text/javascript"></script>
+  <script src="js/rainbow-java.js" type="text/javascript"></script>
+  <script src="js/rainbow-html.js" type="text/javascript"></script>
+</body>
 </html>

@@ -1,0 +1,11 @@
+header {
+	background-color:#000000
+}
+
+blockquote, blockquote p, h1,h2,h3,h4,h5, .price-box ul li b {
+	color:#000000
+}
+
+#large-footer {
+	border-top:4px solid #000000
+}
