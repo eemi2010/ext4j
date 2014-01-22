@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+   <inherits name='com.google.gwt.user.User'/>
+   <inherits name="com.google.gwt.xml.XML"/>
+    <inherits name="com.google.gwt.http.HTTP"/>
+    <inherits name='com.emitrom.pilot.core.shared.Shared'/> 
+    <inherits name='com.emitrom.pilot.core.formfactor.FormFactor'/> 
+    
+    <generate-with class="com.eemi.ext4j.rebind.BeanModelGenerator">
+		<when-type-assignable class="com.eemi.ext4j.client.data.BeanModelLookup" />
+	</generate-with>
+	
+	
+	<generate-with class="com.eemi.ext4j.rebind.TemplateGenerator">
+		<when-type-assignable class="com.eemi.ext4j.client.template.Template" />
+	</generate-with>
+	
+</module>

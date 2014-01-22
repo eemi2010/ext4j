@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+   <inherits name='com.google.gwt.core.Core' />
+   <inherits name='com.google.gwt.user.DOM' />
+   
+   <generate-with class="com.emitrom.pilot.core.shared.rebind.BeanModelGenerator">
+		<when-type-assignable class="com.emitrom.pilot.core.shared.client.data.BeanLookup" />
+	</generate-with>
+	
+	 <define-linker name="swfstd" class="com.emitrom.pilot.linker.SwfIFrameLinker" />
+        <define-linker name="swfxs" class="com.emitrom.pilot.linker.SwfXSLinker" />
+        <define-linker name="swfsso" class="com.emitrom.pilot.linker.SwfSingleScriptLinker" />
+</module>
