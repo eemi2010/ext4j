@@ -317,9 +317,8 @@ try {
 package com.eemi.ext4jdemo.client;
 
 import com.eemi.ext4j.client.core.ExtEntryPoint;
-import com.eemi.ext4j.client.layout.Layout;
+import com.eemi.ext4j.client.ui.DatePicker;
 import com.eemi.ext4j.client.ui.Panel;
-import com.eemi.ext4j.client.ui.TextArea;
 import com.eemi.ext4j.client.ui.Viewport;
 
 public class HelloExt extends ExtEntryPoint {
@@ -328,22 +327,31 @@ public class HelloExt extends ExtEntryPoint {
     public void onLoad() {
 
         Panel panel = new Panel("Ext Panel");
-        panel.setCollapsible(true);
         panel.setSize(600, 600);
         panel.setDraggable(true);
         panel.setResizable(true);
         panel.setXY(300, 100);
         panel.setFrame(true);
         panel.setBodyPadding(10);
-        panel.setLayout(Layout.FIT);
 
-        TextArea text = new TextArea();
-        panel.add(text);
+        DatePicker datePicker = new DatePicker();
+        datePicker.setXY(10, 10);
 
+        panel.add(datePicker);
+
+        Viewport.get().add(panel);
         Viewport.get().add(panel);
 
     }
 } </pre>
+
+  <p>Below is the result. As you can see the result is the same as regular Ext JS JavaScript code.</p>
+   
+ <div class="da-img" style="padding: 30px;" >
+              <img src="images/extpanel.png"   />
+  </div>
+
+  
           <p style="padding-left:0px;">         
            Because it leverages <b>GWT</b> and the <b>Java Platform</b> Ext4j will bring unique capabilities to your <b>Ext JS development</b> : <br/>
            <ul>
