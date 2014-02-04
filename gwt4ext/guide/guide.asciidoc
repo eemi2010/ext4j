@@ -1,0 +1,14 @@
+= Ex4j Reference Guide
+:doctype: book
+
+[[sid-5833084]]
+
+== Introduction
+
+[[sid-5833083]]
+
+=== What is it?
+
+Ext4j is a GWT-based framework for building rich web applications using next-generation web technologies. Built on-top of Sencha's Ext JS , the framework provides a unified programming model across the client and server.
+
+[[sid-5833091]]
