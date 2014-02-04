@@ -1,8 +1,11 @@
 = Ex4j Reference Guide
 :doctype: book
 
+[[sid-5833084]]
+
 == Introduction
 
+[[sid-5833083]]
 
 === What is it?
 
@@ -10,7 +13,6 @@ Ext4j is a GWT-based framework for building rich web applications using next-gen
 
 [[sid-5833091]]
 
-[[sid-5833091]]
 
 === Required software
 
@@ -20,6 +22,9 @@ Ext4j requires a JDK version 6 or higher and depends on Ext JS and the GWT Frame
 * ExtJS: http://www.sencha.com/products/extjs/
 * GWT 2.5 or higher: http://www.gwtproject.org/
 
+[[sid-54493220]]
+
 For a better productivity we also recommend
+
 * Eclipse: https://www.eclipse.org/downloads/
 * The Google Pluging for Eclipse: https://developers.google.com/eclipse/
