@@ -12,3 +12,12 @@
 Ext4j is a GWT-based framework for building rich web applications using next-generation web technologies. Built on-top of Sencha's Ext JS , the framework provides a unified programming model across the client and server.
 
 [[sid-5833091]]
+
+[[sid-5833091]]
+
+=== Required software
+
+Ext4j requires a JDK version 6 or higher and depends on Ext JS and the GWT Framework.
+
+* JDK 6.0: http://java.sun.com/javase/downloads/index.jsp
+* ExtJS: http://www.sencha.com/products/extjs/
