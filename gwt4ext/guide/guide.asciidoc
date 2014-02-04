@@ -22,3 +22,7 @@ Ext4j requires a JDK version 6 or higher and depends on Ext JS and the GWT Frame
 * JDK 6.0: http://java.sun.com/javase/downloads/index.jsp
 * ExtJS: http://www.sencha.com/products/extjs/
 * GWT 2.5 or higher: http://www.gwtproject.org/
+
+For a better productivity we also recommend
+* Eclipse: https://www.eclipse.org/downloads/
+* The Google Pluging for Eclipse: https://developers.google.com/eclipse/
