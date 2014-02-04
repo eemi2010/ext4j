@@ -23,7 +23,7 @@ import com.eemi.ext4j.client.core.EventObject;
 import com.eemi.ext4j.client.core.ExtElement;
 import com.eemi.ext4j.client.util.ClickRepeater;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Provides a convenient wrapper for TextFields that adds a clickable trigger

@@ -29,7 +29,7 @@ import com.eemi.ext4j.client.events.draw.MouseLeaveHandler;
 import com.eemi.ext4j.client.events.draw.MouseMoveHandler;
 import com.eemi.ext4j.client.events.draw.MouseUpHandler;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * The Draw Component is a surface in which sprites can be rendered. The Draw

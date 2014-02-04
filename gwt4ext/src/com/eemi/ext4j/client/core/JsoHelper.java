@@ -24,7 +24,7 @@ import java.util.Map;
 
 import com.eemi.ext4j.client.ui.ComponentFactory;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Core Helper class to deal with JavaScript Object

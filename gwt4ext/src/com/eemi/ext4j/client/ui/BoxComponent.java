@@ -25,7 +25,7 @@ import com.eemi.ext4j.client.core.Size;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.layout.BorderRegion;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Timer;
 
 /**

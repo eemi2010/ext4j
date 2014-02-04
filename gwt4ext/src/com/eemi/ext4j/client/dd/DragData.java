@@ -22,7 +22,7 @@ import com.eemi.ext4j.client.core.JsObject;
 import com.eemi.ext4j.client.core.JsoHelper;
 import com.eemi.ext4j.client.panel.PanelDragData;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Base DragData class that is passed to the drop target when the source is

@@ -22,7 +22,7 @@ import java.util.Date;
 
 import com.eemi.ext4j.client.core.Component;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Provides a date input field with a {@link DatePicker} dropdown and automatic

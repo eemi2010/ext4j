@@ -71,8 +71,8 @@ import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -374,16 +374,16 @@ public abstract class Component extends AbstractComponent implements Observable 
 
     protected abstract JavaScriptObject create(JavaScriptObject config);
 
-    public Element getElement() {
+    public com.google.gwt.user.client.Element getElement() {
         return getElement(true);
     }
 
-    protected void setElement(Element elem) {
+    protected void setElement(com.google.gwt.user.client.Element elem) {
         super.setElement(elem);
         isElementSet = true;
     }
 
-    public Element getElement(boolean allowPreRender) {
+    public com.google.gwt.user.client.Element getElement(boolean allowPreRender) {
         if (!isElementSet) {
             JavaScriptObject jsObj = getComponentJS(id);
             if (!isRendered()) {

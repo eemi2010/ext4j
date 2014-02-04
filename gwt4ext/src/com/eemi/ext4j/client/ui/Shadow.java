@@ -21,7 +21,7 @@ package com.eemi.ext4j.client.ui;
 import com.eemi.ext4j.client.core.BaseExtWidget;
 import com.eemi.ext4j.client.core.JsoHelper;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Simple class that can provide a shadow effect for any element. Note that the

@@ -20,7 +20,7 @@ package com.eemi.ext4j.client.util;
 
 import com.eemi.ext4j.client.core.JsoHelper;
 import com.eemi.ext4j.client.core.config.BaseConfig;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * ClickRepeater configuration class.

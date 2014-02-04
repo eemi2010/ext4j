@@ -20,7 +20,7 @@ package com.eemi.ext4j.client.util;
 
 import com.eemi.ext4j.client.core.JsObject;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Handles mapping keys to actions for an element. One key map can be used for

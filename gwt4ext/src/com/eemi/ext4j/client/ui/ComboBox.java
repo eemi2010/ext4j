@@ -30,7 +30,7 @@ import com.eemi.ext4j.client.events.form.BeforeDeselectHandler;
 import com.eemi.ext4j.client.events.form.BeforeSelectHandler;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.uibinder.client.UiConstructor;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * A combobox control with support for autocomplete, remote-loading, paging and

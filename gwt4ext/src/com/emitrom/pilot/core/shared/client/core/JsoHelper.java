@@ -19,7 +19,7 @@
 package com.emitrom.pilot.core.shared.client.core;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 import java.util.Date;
 import java.util.Iterator;

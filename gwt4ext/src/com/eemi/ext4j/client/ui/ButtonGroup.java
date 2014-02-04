@@ -22,7 +22,7 @@ import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.layout.ContainerLayout;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Provides a container for arranging a group of related Buttons in a tabular

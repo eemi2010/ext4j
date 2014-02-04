@@ -18,7 +18,7 @@
  */
 package com.eemi.ext4j.client.core;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Intefrace used / returned by certain {@link com.gwtext.client.core.DomQuery}

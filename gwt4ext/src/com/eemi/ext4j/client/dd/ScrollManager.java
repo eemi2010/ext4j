@@ -18,7 +18,7 @@
  */
 package com.eemi.ext4j.client.dd;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Provides automatic scrolling of overflow regions in the page during drag

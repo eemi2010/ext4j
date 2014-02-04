@@ -30,7 +30,7 @@ import com.eemi.ext4j.client.events.window.RestoreHandler;
 import com.eemi.ext4j.client.layout.ContainerLayout;
 import com.eemi.ext4j.client.layout.Layout;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * A specialized panel intended for use as an application window. Windows are

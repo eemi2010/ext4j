@@ -31,7 +31,7 @@ import com.eemi.ext4j.client.events.editor.SpecialKeyHandler;
 import com.eemi.ext4j.client.events.editor.StartEditHandler;
 import com.eemi.ext4j.client.field.Field;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * A base editor field that handles displaying/hiding on demand and has some

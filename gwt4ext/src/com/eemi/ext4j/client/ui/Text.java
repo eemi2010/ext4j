@@ -21,7 +21,7 @@ package com.eemi.ext4j.client.ui;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.draw.Sprite;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * This class encapsulates a drawn text item as rendered by the Ext.draw package

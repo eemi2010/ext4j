@@ -106,7 +106,7 @@ import com.eemi.ext4j.client.laf.Scroll;
 import com.eemi.ext4j.client.selection.SelectionModel;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * TablePanel is the basis of both {@link TreePanel} and {@link GridPanel}.

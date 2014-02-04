@@ -55,7 +55,7 @@ import com.eemi.ext4j.client.layout.LayoutData;
 import com.eemi.ext4j.client.layout.TableLayout;
 import com.eemi.ext4j.client.layout.VBoxLayout;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;

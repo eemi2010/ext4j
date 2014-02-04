@@ -21,7 +21,7 @@ import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.ui.DataView;
 import com.eemi.ext4j.client.ui.TableView;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * The grid View class provides extra Ext.grid.Panel specific functionality to

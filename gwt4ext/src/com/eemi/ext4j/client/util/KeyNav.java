@@ -20,7 +20,7 @@ package com.eemi.ext4j.client.util;
 
 import com.eemi.ext4j.client.core.JsObject;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Provides a convenient wrapper for normalized keyboard navigation. KeyNav

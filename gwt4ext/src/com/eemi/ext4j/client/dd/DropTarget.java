@@ -21,7 +21,7 @@ package com.eemi.ext4j.client.dd;
 import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.core.EventObject;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * 

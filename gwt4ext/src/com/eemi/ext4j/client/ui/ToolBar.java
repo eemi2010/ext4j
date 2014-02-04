@@ -22,7 +22,7 @@ import com.eemi.ext4j.client.core.config.Dock;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.layout.ContainerLayout;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 /**
  * Basic Toolbar class. Although the defaultType for Toolbar is button, Toolbar
