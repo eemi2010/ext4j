@@ -1,11 +1,8 @@
 = Ex4j Reference Guide
 :doctype: book
 
-[[sid-5833084]]
-
 == Introduction
 
-[[sid-5833083]]
 
 === What is it?
 
