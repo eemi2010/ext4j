@@ -95,6 +95,14 @@ public class Store extends JsObject {
         return new Store(models);
     }
 
+    public static Store from(List<? extends Bean> beans, String... fields) {
+        List<BaseModel> models = new ArrayList<BaseModel>();
+        for (Bean bean : beans) {
+            models.add(BaseModel.from(bean.getJsObj()));
+        }
+        return new Store(models, fields);
+    }
+
     public Store(List<? extends BaseModel> data, ProxyConfig proxy) {
         assert !data.isEmpty() : "BaseModel list cannot be empty.";
         Set<String> fields = new HashSet<String>(data.get(0).getFields());

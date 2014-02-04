@@ -501,6 +501,9 @@ public class TablePanel extends Panel {
     public native SelectionModel getSelectionModel()/*-{
 		var grid = this.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()();
 		var obj = grid.getSelectionModel();
+		if (!obj) {
+			return null;
+		}
 		return @com.eemi.ext4j.client.selection.SelectionModel::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
     }-*/;
 

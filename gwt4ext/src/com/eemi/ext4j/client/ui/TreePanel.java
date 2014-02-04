@@ -20,6 +20,7 @@ package com.eemi.ext4j.client.ui;
 import java.util.List;
 
 import com.eemi.ext4j.client.core.Component;
+import com.eemi.ext4j.client.core.Ext;
 import com.eemi.ext4j.client.core.Function;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.data.BaseModel;
@@ -1031,6 +1032,11 @@ public class TreePanel extends TablePanel {
      */
     public static TreePanel cast(Component component) {
         return new TreePanel(component.getOrCreateJsObj());
+    }
+
+    public static TreePanel wrap(String componentId) {
+        ComponentFactory.ensureXType(XType.TREE_PANEL.getValue(), componentId);
+        return new TreePanel(Ext.getCmp(componentId).getOrCreateJsObj());
     }
 
 }

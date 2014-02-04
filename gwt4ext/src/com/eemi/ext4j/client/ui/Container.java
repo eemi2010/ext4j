@@ -803,7 +803,7 @@ public class Container extends Component implements HasWidgets {
     }
 
     public void setBodyPadding(int value) {
-        setAttribute("bodyPadding", value, true);
+        setAttribute("bodyPadding", value, true, true);
     }
 
     public void setPadding(int value) {

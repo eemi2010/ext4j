@@ -18,6 +18,7 @@
 package com.eemi.ext4j.client.ui;
 
 import com.eemi.ext4j.client.core.Component;
+import com.eemi.ext4j.client.core.Ext;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.events.HandlerRegistration;
 import com.eemi.ext4j.client.events.view.AfterItemCollapseHandler;
@@ -50,6 +51,11 @@ public class TreeView extends TableView {
      */
     public TreeView() {
         init();
+    }
+
+    public static TreeView wrap(String componentId) {
+        ComponentFactory.ensureXType(XType.TREE_VIEW.getValue(), componentId);
+        return new TreeView(Ext.getCmp(componentId).getOrCreateJsObj());
     }
 
     protected TreeView(JavaScriptObject jsObj) {

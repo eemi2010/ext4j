@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eemi.ext4j.client.core.Component;
+import com.eemi.ext4j.client.core.Ext;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.layout.ContainerLayout;
 import com.eemi.ext4j.client.layout.Layout;
@@ -83,8 +84,12 @@ public class Viewport extends Container implements AcceptsOneWidget {
      * @return, the singleton instance of the viewport
      */
     public static Viewport get(Layout layout) {
+        return get(layout, 0);
+    }
+
+    private static Viewport get(Layout layout, int bodyPadding) {
         if (viewPort == null) {
-            viewPort = initViewPort(layout.getValue());
+            viewPort = initViewPort(layout.getValue(), bodyPadding);
         }
         return viewPort;
     }
@@ -97,8 +102,12 @@ public class Viewport extends Container implements AcceptsOneWidget {
      * @return, the singleton instance of the viewport
      */
     public static Viewport get(ContainerLayout layout) {
+        return get(layout, 0);
+    }
+
+    private static Viewport get(ContainerLayout layout, int bodyPadding) {
         if (viewPort == null) {
-            viewPort = initViewPort(layout.getJsObj());
+            viewPort = initViewPort(layout.getJsObj(), bodyPadding);
         }
         return viewPort;
     }
@@ -110,7 +119,7 @@ public class Viewport extends Container implements AcceptsOneWidget {
      */
     public static Viewport get() {
         if (viewPort == null) {
-            viewPort = initViewPort(Layout.AUTO.getValue());
+            viewPort = initViewPort(Layout.AUTO.getValue(), 0);
         }
         return viewPort;
     }
@@ -176,19 +185,27 @@ public class Viewport extends Container implements AcceptsOneWidget {
 
     }
 
-    private native static Viewport initViewPort(String l) /*-{
+    public static Viewport wrap(String componentId) {
+        ComponentFactory.ensureXType(XType.VIEWPORT.getValue(), componentId);
+        return new Viewport(Ext.getCmp(componentId).getOrCreateJsObj());
+    }
+
+    private native static Viewport initViewPort(String l, int padding) /*-{
 		var viewport = new $wnd.Ext.container.Viewport({
-			layout : l
+			layout : l,
+			bodyPadding : '100'
 		});
 		var container = @com.eemi.ext4j.client.ui.Viewport::new(Lcom/google/gwt/core/client/JavaScriptObject;)(viewport);
 		return container;
     }-*/;
 
-    private native static Viewport initViewPort(JavaScriptObject l) /*-{
+    private native static Viewport initViewPort(JavaScriptObject l, int padding) /*-{
 		var viewport = new $wnd.Ext.container.Viewport({
-			layout : l
+			layout : l,
+			bodyPadding : padding
 		});
 		var container = @com.eemi.ext4j.client.ui.Viewport::new(Lcom/google/gwt/core/client/JavaScriptObject;)(viewport);
 		return container;
     }-*/;
+
 }

@@ -56,11 +56,11 @@ public class GridPanel extends TablePanel {
         return XType.GRID_PANEL.getValue();
     }
 
-    public GridPanel() {
+    protected GridPanel() {
 
     }
 
-    public GridPanel(AbstractViewPlugin dd) {
+    private GridPanel(AbstractViewPlugin dd) {
         this.dd = dd;
     }
 
@@ -68,20 +68,26 @@ public class GridPanel extends TablePanel {
         super(obj);
     }
 
-    /**
-     * Create a new NotificationContainer.
-     */
-    public GridPanel(Store store) {
-        setStore(store);
-    }
-
     public GridPanel(String title, Store store, List<GridColumn> columns) {
+        this();
         setTitle(title);
         setStore(store);
         setColumns(columns);
     }
 
+    public GridPanel(String title, Store store) {
+        this();
+        setTitle(title);
+        setStore(store);
+    }
+
+    public GridPanel(Store store) {
+        this();
+        setStore(store);
+    }
+
     public GridPanel(Store store, List<GridColumn> columns) {
+        this();
         setStore(store);
         setColumns(columns);
     }
@@ -92,19 +98,14 @@ public class GridPanel extends TablePanel {
         setColumns(Arrays.asList(columns));
     }
 
+    public GridPanel(String title, Store store, GridColumn... columns) {
+        this();
+        setTitle(title);
+        setStore(store);
+        setColumns(Arrays.asList(columns));
+    }
+
     protected native JavaScriptObject create(JavaScriptObject config) /*-{
-		var dd = this.@com.eemi.ext4j.client.ui.GridPanel::dd;
-		if (dd) {
-			var peer = dd.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
-			var vc = config.ViewConfig;
-			if (vc) {
-				vc.plugins = peer;
-			} else {
-				config.viewConfig = {
-					plugins : peer
-				};
-			}
-		}
 		return new $wnd.Ext.grid.Panel(config);
     }-*/;
 

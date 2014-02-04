@@ -168,4 +168,22 @@ public class ComponentFactory {
     public static Component cast(Component component) {
         return getComponent(component.getOrCreateJsObj());
     }
+
+    static native void ensureXType(String thisXtype, String componentId)/*-{
+		var cmp = $wnd.Ext.getCmp(componentId);
+
+		if (!cmp) {
+			throw new Error("Ext4j Could not find component with the id :  "
+					+ componentId);
+		}
+
+		if (cmp.xtype != thisXtype) {
+			throw new Error(
+					"You are trying to wrap a component with an incompatible xtye : "
+							+ cmp.xtype
+							+ ". You can only wrap components with the xtype "
+							+ thisXtype + " with this component");
+		}
+    }-*/;
+
 }
