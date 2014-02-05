@@ -18,7 +18,6 @@
 package com.eemi.ext4j.client.ui;
 
 import com.eemi.ext4j.client.core.Component;
-import com.eemi.ext4j.client.core.Ext;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -66,9 +65,8 @@ public class ToolBarText extends Component {
 		component.setText(value);
     }-*/;
 
-    public static ToolBarText wrap(String componentId) {
-        ComponentFactory.ensureXType("tbtext", componentId);
-        return new ToolBarText(Ext.getCmp(componentId).getOrCreateJsObj());
+    public static ToolBarText cast(Component component) {
+        return new ToolBarText(component.getOrCreateJsObj());
     }
 
 }

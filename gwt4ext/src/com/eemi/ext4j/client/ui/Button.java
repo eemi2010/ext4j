@@ -37,9 +37,9 @@ import com.eemi.ext4j.client.laf.Alignment;
 import com.eemi.ext4j.client.laf.ButtonScale;
 import com.eemi.ext4j.client.tip.Tip;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Image;
 
 /**

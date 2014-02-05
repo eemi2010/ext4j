@@ -18,7 +18,6 @@
 package com.eemi.ext4j.client.ui;
 
 import com.eemi.ext4j.client.core.Component;
-import com.eemi.ext4j.client.core.Ext;
 import com.eemi.ext4j.client.core.ExtElement;
 import com.eemi.ext4j.client.core.Function;
 import com.eemi.ext4j.client.core.config.XType;
@@ -398,11 +397,6 @@ public class Window extends Panel {
 
     public static Window cast(Component component) {
         return new Window(component.getOrCreateJsObj());
-    }
-
-    public static Window wrap(String componentId) {
-        ComponentFactory.ensureXType(XType.WINDOW.getValue(), componentId);
-        return new Window(Ext.getCmp(componentId).getOrCreateJsObj());
     }
 
     private native JavaScriptObject createEscFunction(Function fn)/*-{

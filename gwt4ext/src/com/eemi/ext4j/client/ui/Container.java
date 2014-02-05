@@ -936,6 +936,10 @@ public class Container extends Component implements HasWidgets {
 
     }-*/;
 
+    public static Container cast(Component component) {
+        return new Container(component.getOrCreateJsObj());
+    }
+
     /**
      * Fires before any Ext.Component is removed from the container. A handler
      * can return false to cancel the remove.

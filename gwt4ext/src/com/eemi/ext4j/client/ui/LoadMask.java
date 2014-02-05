@@ -1,20 +1,19 @@
 /**
- Ext4j UI Library
- Copyright 2014, Alain Ekambi, and individual contributors as indicated
- by the @authors tag. See the copyright.txt in the distribution for a
- full listing of individual contributors.
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Ext4j UI Library Copyright 2014, Alain Ekambi, and individual contributors as
+ * indicated by the @authors tag. See the copyright.txt in the distribution for
+ * a full listing of individual contributors.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.eemi.ext4j.client.ui;
 
@@ -91,11 +90,12 @@ public class LoadMask extends Component {
 
     /**
      * The base CSS class to apply to this component's element. This will also
-     * be prepended to elements within this component like NotificationContainer's body will get
-     * a class x-panel-body. This means that if you create a subclass of NotificationContainer,
-     * and you want it to get all the Panels styling for the element and the
-     * body, you leave the baseCls x-panel and use componentCls to add specific
-     * styling for this component.
+     * be prepended to elements within this component like
+     * NotificationContainer's body will get a class x-panel-body. This means
+     * that if you create a subclass of NotificationContainer, and you want it
+     * to get all the Panels styling for the element and the body, you leave the
+     * baseCls x-panel and use componentCls to add specific styling for this
+     * component.
      * <p>
      * Defaults to: Ext.baseCSSPrefix + 'mask-msg'
      * 
@@ -264,11 +264,9 @@ public class LoadMask extends Component {
      */
     public native void hide(Component animateTarget) /*-{
 		var component = this
-				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()
-				();
-		component
-				.hide(animateTarget
-						.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj());
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()();
+		component.hide(animateTarget
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj());
     }-*/;
 
     /**
@@ -285,15 +283,12 @@ public class LoadMask extends Component {
      */
     public native void hide(Component animateTarget, Function callback) /*-{
 		var component = this
-				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()
-				();
-		component
-				.hide(
-						animateTarget
-								.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj(),
-						$entry(function() {
-							callback.@com.eemi.ext4j.client.core.Function::execute()();
-						}));
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()();
+		component.hide(animateTarget
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj(),
+				$entry(function() {
+					callback.@com.eemi.ext4j.client.core.Function::execute()();
+				}));
     }-*/;
 
     /**
@@ -385,11 +380,9 @@ public class LoadMask extends Component {
      */
     public native void show(Component animateTarget) /*-{
 		var component = this
-				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()
-				();
-		component
-				.show(animateTarget
-						.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj());
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()();
+		component.show(animateTarget
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj());
     }-*/;
 
     /**
@@ -405,15 +398,16 @@ public class LoadMask extends Component {
      */
     public native void show(Component animateTarget, Function callback) /*-{
 		var component = this
-				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()
-				();
-		component
-				.show(
-						animateTarget
-								.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj(),
-						$entry(function() {
-							callback.@com.eemi.ext4j.client.core.Function::execute()();
-						}));
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj()();
+		component.show(animateTarget
+				.@com.eemi.ext4j.client.core.Component::getOrCreateJsObj(),
+				$entry(function() {
+					callback.@com.eemi.ext4j.client.core.Function::execute()();
+				}));
     }-*/;
+
+    public static LoadMask cast(Component component) {
+        return new LoadMask(component.getOrCreateJsObj());
+    }
 
 }

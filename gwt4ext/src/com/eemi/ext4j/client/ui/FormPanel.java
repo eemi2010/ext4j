@@ -519,4 +519,8 @@ public class FormPanel extends Panel {
         setAttribute("waitMsgTarget", waitMsgTarget, true);
     }
 
+    public static FormPanel cast(Component component) {
+        return new FormPanel(component.getOrCreateJsObj());
+    }
+
 }

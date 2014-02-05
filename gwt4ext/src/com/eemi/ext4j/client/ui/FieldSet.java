@@ -17,6 +17,7 @@
  */
 package com.eemi.ext4j.client.ui;
 
+import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.events.form.BeforeCollapseHandler;
 import com.eemi.ext4j.client.events.form.BeforeExpandHandler;
 import com.eemi.ext4j.client.events.form.CollapseHandler;
@@ -315,5 +316,9 @@ public class FieldSet extends Container {
 		var toReturn = @com.eemi.ext4j.client.events.HandlerRegistration::new(Lcom/eemi/ext4j/client/core/Component;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(this,eventName,fn);
 		return toReturn;
     }-*/;
+
+    public static FieldSet cast(Component component) {
+        return new FieldSet(component.getOrCreateJsObj());
+    }
 
 }

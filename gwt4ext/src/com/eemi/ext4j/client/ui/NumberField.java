@@ -17,6 +17,7 @@
  */
 package com.eemi.ext4j.client.ui;
 
+import com.eemi.ext4j.client.core.Component;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -251,5 +252,9 @@ public class NumberField extends TextField {
      */
     public void setNanText(String nanText) {
         setAttribute("nanText", nanText, true, true);
+    }
+
+    public static NumberField cast(Component component) {
+        return new NumberField(component.getOrCreateJsObj());
     }
 }

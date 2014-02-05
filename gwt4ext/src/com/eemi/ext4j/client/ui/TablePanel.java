@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.core.JsoHelper;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.data.Store;
@@ -523,6 +524,10 @@ public class TablePanel extends Panel {
 		var obj = grid.getView();
 		return @com.eemi.ext4j.client.ui.TableView::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
     }-*/;
+
+    public static TablePanel cast(Component component) {
+        return new TablePanel(component.getOrCreateJsObj());
+    }
 
     // Events
 

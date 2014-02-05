@@ -17,6 +17,7 @@
  */
 package com.eemi.ext4j.client.ui;
 
+import com.eemi.ext4j.client.core.Component;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayInteger;
 
@@ -160,6 +161,10 @@ public class CheckboxGroup extends FieldContainer {
      */
     public void setVertical(boolean value) {
         setAttribute("vertical", value, true);
+    }
+
+    public static CheckboxGroup cast(Component component) {
+        return new CheckboxGroup(component.getOrCreateJsObj());
     }
 
 }

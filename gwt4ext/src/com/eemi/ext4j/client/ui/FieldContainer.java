@@ -17,6 +17,7 @@
  */
 package com.eemi.ext4j.client.ui;
 
+import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.field.LabelAlign;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
@@ -164,6 +165,10 @@ public class FieldContainer extends Container {
      */
     public String getFieldLabel() {
         return getAttribute("fieldLabel");
+    }
+
+    public static FieldContainer cast(Component component) {
+        return new FieldContainer(component.getOrCreateJsObj());
     }
 
     private native void setFieldLabelRendered(String fieldLabel, String fieldId) /*-{

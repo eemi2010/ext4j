@@ -17,7 +17,7 @@
  */
 package com.eemi.ext4j.client.ui;
 
-import com.eemi.ext4j.client.core.Ext;
+import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.core.config.Position;
 import com.eemi.ext4j.client.core.config.XType;
 import com.eemi.ext4j.client.tip.Tip;
@@ -189,9 +189,8 @@ public class ToolTip extends Tip {
         setAttribute("trackMouse", value, true);
     }
 
-    public static ToolTip wrap(String componentId) {
-        ComponentFactory.ensureXType(XType.TOOLTIP.getValue(), componentId);
-        return new ToolTip(Ext.getCmp(componentId).getOrCreateJsObj());
+    public static ToolTip cast(Component component) {
+        return new ToolTip(component.getOrCreateJsObj());
     }
 
 }
