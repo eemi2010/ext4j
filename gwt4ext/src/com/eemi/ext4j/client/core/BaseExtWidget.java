@@ -1,25 +1,23 @@
 /**
- Ext4j UI Library
- Copyright 2014, Alain Ekambi, and individual contributors as indicated
- by the @authors tag. See the copyright.txt in the distribution for a
- full listing of individual contributors.
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Ext4j UI Library Copyright 2014, Alain Ekambi, and individual contributors as
+ * indicated by the @authors tag. See the copyright.txt in the distribution for
+ * a full listing of individual contributors.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.eemi.ext4j.client.core;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -96,15 +94,15 @@ public abstract class BaseExtWidget extends Widget {
      */
 
     public int getOffsetHeight() {
-        return DOM.getElementPropertyInt(getElement(), "offsetHeight");
+        return getElement().getPropertyInt("offsetHeight");
     }
 
     public int getOffsetWidth() {
-        return DOM.getElementPropertyInt(getElement(), "offsetWidth");
+        return getElement().getPropertyInt("offsetWidth");
     }
 
     public String getTitle() {
-        return DOM.getElementProperty(getElement(), "title");
+        return getElement().getPropertyString("title");
     }
 
     public boolean isVisible() {
@@ -121,7 +119,7 @@ public abstract class BaseExtWidget extends Widget {
         // where
         // it won't accept negative numbers in length measurements
         assert extractLengthValue(height.trim().toLowerCase()) >= 0 : "CSS heights should not be negative";
-        DOM.setStyleAttribute(getElement(), "height", height);
+        getElement().getStyle().setProperty("height", height);
     }
 
     private native double extractLengthValue(String s) /*-{
@@ -134,9 +132,9 @@ public abstract class BaseExtWidget extends Widget {
 
     public void setTitle(String title) {
         if (title == null || title.length() == 0) {
-            DOM.removeElementAttribute(getElement(), "title");
+            getElement().removeAttribute("title");
         } else {
-            DOM.setElementAttribute(getElement(), "title", title);
+            getElement().setAttribute("title", title);
         }
     }
 
@@ -149,7 +147,7 @@ public abstract class BaseExtWidget extends Widget {
         // where
         // it won't accept negative numbers in length measurements
         assert extractLengthValue(width.trim().toLowerCase()) >= 0 : "CSS widths should not be negative";
-        DOM.setStyleAttribute(getElement(), "width", width);
+        getElement().getStyle().setProperty("width", width);
     }
 
     public boolean equals(Object obj) {
