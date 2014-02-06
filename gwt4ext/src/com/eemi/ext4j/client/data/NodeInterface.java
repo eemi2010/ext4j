@@ -114,7 +114,7 @@ public class NodeInterface extends BaseModel {
 		return @com.eemi.ext4j.client.data.NodeInterface::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
     }-*/;
 
-    static JsArray<JavaScriptObject> fromList(List<NodeInterface> models) {
+    static JsArray<JavaScriptObject> fromListOfNode(List<NodeInterface> models) {
         JsArray<JavaScriptObject> values = JsArray.createArray().cast();
         for (NodeInterface model : models) {
             values.push(model.getJsObj());
