@@ -25,6 +25,10 @@ import com.google.gwt.dom.client.Element;
  */
 public class ComponentManager {
 
+    private ComponentManager() {
+
+    }
+
     /**
      * Registers a function that will be called when a specified component is
      * added to ComponentManager.
