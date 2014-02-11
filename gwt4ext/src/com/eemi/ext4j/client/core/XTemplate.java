@@ -1,20 +1,19 @@
 /**
- Ext4j UI Library
- Copyright 2014, Alain Ekambi, and individual contributors as indicated
- by the @authors tag. See the copyright.txt in the distribution for a
- full listing of individual contributors.
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Ext4j UI Library Copyright 2014, Alain Ekambi, and individual contributors as
+ * indicated by the @authors tag. See the copyright.txt in the distribution for
+ * a full listing of individual contributors.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.eemi.ext4j.client.core;
 
@@ -41,11 +40,26 @@ public class XTemplate extends Template {
      *            the HTML fragment
      */
     public XTemplate(String html) {
-        jsObj = create(html.replaceAll("'", "\""));
+        this(html, false);
+    }
+
+    /**
+     * Create a new Template.
+     * 
+     * @param html
+     *            the HTML fragment
+     */
+    public XTemplate(String html, boolean replaceSingleQuote) {
+        if (replaceSingleQuote) {
+            jsObj = create(html.replaceAll("'", "\""));
+        } else {
+            jsObj = create(html);
+        }
+
         this.html = html;
     }
 
-    public XTemplate(JavaScriptObject jsObj) {
+    protected XTemplate(JavaScriptObject jsObj) {
         super(jsObj);
     }
 
@@ -55,12 +69,29 @@ public class XTemplate extends Template {
      * @param htmlfrags
      *            the HTML fragments
      */
+
     public XTemplate(String... htmlfrags) {
+        this(false, htmlfrags);
+    }
+
+    /**
+     * Create a new Template.
+     * 
+     * @param htmlfrags
+     *            the HTML fragments
+     */
+
+    public XTemplate(boolean replaceSingleQuote, String... htmlfrags) {
         String htmlfrag = "";
         for (int i = 0; i < htmlfrags.length; i++) {
             htmlfrag += htmlfrags[i];
         }
-        html = htmlfrag.replaceAll("'", "\"");
+        if (replaceSingleQuote) {
+            html = htmlfrag.replaceAll("'", "\"");
+        } else {
+            html = htmlfrag;
+        }
+
         jsObj = create(html);
     }
 
