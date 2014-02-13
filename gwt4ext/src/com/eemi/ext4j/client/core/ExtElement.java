@@ -1607,7 +1607,7 @@ public class ExtElement extends DomElement {
      */
     public native boolean hasClass(String className)/*-{
 		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
-		return elem.hasClass(className);
+		return elem.hasCls(className);
     }-*/;
 
     // todo initDD, initDDProxy, initDDTarget
@@ -2459,6 +2459,25 @@ public class ExtElement extends DomElement {
 		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
 		elem.highlight();
 		return this;
+    }-*/;
+
+    public native void disableShadow()/*-{
+		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
+		if (elem.disableShadow) {
+			elem.disableShadow();
+
+		}
+		//diable isn't working entirely (e.g. for last shown window) so create shadow backup and replace shadow by null
+		elem._shadow = el.shadow;
+		elem.shadow = null;
+    }-*/;
+
+    public native void enableShadow()/*-{
+		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
+		if (elem.disableShadow) {
+			elem.shadow = el._shadow;
+			elem.enableShadow();
+		}
     }-*/;
 
     /**
