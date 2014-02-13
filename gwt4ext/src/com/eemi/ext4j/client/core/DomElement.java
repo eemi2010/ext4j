@@ -948,6 +948,19 @@ public class DomElement extends JsObject implements Fx {
     }-*/;
 
     /**
+     * Sets the element's CSS bottom style.
+     * 
+     * @param bottom
+     *            the bottom CSS property value
+     * @return this
+     */
+    public native DomElement setBottom(double bottom)/*-{
+		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
+		elem.setBottom(bottom);
+		return this;
+    }-*/;
+
+    /**
      * Sets the element's position and size in one shot.
      * 
      * @param x
@@ -1126,6 +1139,20 @@ public class DomElement extends JsObject implements Fx {
     }-*/;
 
     /**
+     * Sets the element's left position directly using CSS style (instead of
+     * setX).
+     * 
+     * @param left
+     *            the left CSS property value
+     * @return this
+     */
+    public native DomElement setLeft(double left)/*-{
+		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
+		elem.setLeft(left);
+		return this;
+    }-*/;
+
+    /**
      * Quick set left and top adding default units.
      * 
      * @param left
@@ -1137,6 +1164,7 @@ public class DomElement extends JsObject implements Fx {
     public native DomElement setLeftTop(String left, String top)/*-{
 		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
 		elem.setLeft(left);
+		elem.setTop(top);
 		return this;
     }-*/;
 
@@ -1265,6 +1293,19 @@ public class DomElement extends JsObject implements Fx {
     }-*/;
 
     /**
+     * Sets the element's CSS right style.
+     * 
+     * @param right
+     *            the right CSS property value
+     * @return this
+     */
+    public native DomElement setRight(double right)/*-{
+		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
+		elem.setRight(right);
+		return this;
+    }-*/;
+
+    /**
      * Set the size of the element. If animation is true, both width an height
      * will be animated concurrently.
      * 
@@ -1339,6 +1380,20 @@ public class DomElement extends JsObject implements Fx {
      * @return this
      */
     public native DomElement setTop(String top)/*-{
+		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
+		elem.setTop(top);
+		return this;
+    }-*/;
+
+    /**
+     * Sets the element's top position directly using CSS style (instead of
+     * setY).
+     * 
+     * @param top
+     *            the top CSS property value
+     * @return this
+     */
+    public native DomElement setTop(double top)/*-{
 		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
 		elem.setTop(top);
 		return this;
