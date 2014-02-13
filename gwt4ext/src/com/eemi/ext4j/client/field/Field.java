@@ -27,8 +27,8 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
 
 /**
  * Base class for form fields that provides default event handling, sizing,
@@ -579,7 +579,7 @@ public abstract class Field extends BoxComponent {
      */
     public String getInputType() {
         if (isRendered()) {
-            return DOM.getElementProperty(getElement(), "type");
+            return getElement().getPropertyString("type");
         } else {
             String inputType = getAttribute("inputType");
             if (inputType == null)
@@ -749,7 +749,7 @@ public abstract class Field extends BoxComponent {
         if (!isRendered()) {
             setAttribute("readOnly", readOnly, true);
         } else {
-            DOM.setElementPropertyBoolean(getElement(), "readOnly", readOnly);
+            getElement().setPropertyBoolean("readOnly", readOnly);
         }
     }
 
@@ -762,7 +762,7 @@ public abstract class Field extends BoxComponent {
         if (!isRendered()) {
             return getAttributeAsBoolean("readOnly");
         } else {
-            return DOM.getElementPropertyBoolean(getElement(), "readOnly");
+            return getElement().getPropertyBoolean("readOnly");
         }
     }
 
