@@ -20,7 +20,6 @@ package com.eemi.ext4j.client.ui;
 import com.eemi.ext4j.client.core.Component;
 import com.eemi.ext4j.client.util.Format;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.DOM;
 
 /**
  * A label class for Forms.
@@ -65,7 +64,7 @@ public class Label extends BoxComponent {
         if (!isRendered()) {
             setAttribute("text", text, true);
         } else {
-            DOM.setElementProperty(getElement(), "innerHTML", Format.htmlEncode(text));
+            getElement().setPropertyString("innerHTML", Format.htmlEncode(text));
         }
     }
 

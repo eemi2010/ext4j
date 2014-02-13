@@ -1,20 +1,19 @@
 /**
- Ext4j UI Library
- Copyright 2014, Alain Ekambi, and individual contributors as indicated
- by the @authors tag. See the copyright.txt in the distribution for a
- full listing of individual contributors.
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Ext4j UI Library Copyright 2014, Alain Ekambi, and individual contributors as
+ * indicated by the @authors tag. See the copyright.txt in the distribution for
+ * a full listing of individual contributors.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.eemi.ext4j.client.ui;
 
@@ -62,9 +61,12 @@ public class Chart extends DrawComponent {
     private List<AbstractAxis> axis = new ArrayList<AbstractAxis>();
     private List<AbstractSerie> series = new ArrayList<AbstractSerie>();
     List<AbstractSerie> nativePeers = new ArrayList<AbstractSerie>();
+    private Store store;
 
     private native void init()/*-{
-		var c = new $wnd.Ext.chart.Chart();
+		var c = new $wnd.Ext.chart.Chart({
+			store : []
+		});
 		@com.eemi.ext4j.client.ui.Chart::configPrototype = c.initialConfig;
     }-*/;
 
@@ -83,18 +85,59 @@ public class Chart extends DrawComponent {
         // init();
     }
 
-    public Chart(Store store) {
-        setStore(store);
+    public static Chart newInstance(final Store store, final List<AbstractAxis> axis) {
+        assert store != null;
+        assert !axis.isEmpty();
+
+        return new Chart() {
+            @Override
+            protected void onConfigCreated() {
+                this.setStore(store);
+                this.setAxes(axis);
+            }
+        };
     }
 
-    public Chart(Store store, Theme theme) {
-        setStore(store);
-        setTheme(theme);
+    public static Chart create(final Store store, final List<AbstractSerie> series) {
+        assert store != null;
+        assert !series.isEmpty();
+        return new Chart() {
+            @Override
+            protected void onConfigCreated() {
+                this.setStore(store);
+                this.setSeries(series);
+            }
+        };
     }
 
-    public Chart(Store store, String theme) {
-        setStore(store);
-        setTheme(theme);
+    public static Chart newInstance(final Store store, final List<AbstractAxis> axis, final List<AbstractSerie> series) {
+        assert store != null;
+        assert !axis.isEmpty();
+        assert !series.isEmpty();
+        return new Chart() {
+            @Override
+            protected void onConfigCreated() {
+                this.setStore(store);
+                this.setAxes(axis);
+                this.setSeries(series);
+            }
+        };
+    }
+
+    public static Chart newInstance(final Store store, final List<AbstractAxis> axis, final List<AbstractSerie> series,
+                    final Legend legend) {
+        assert store != null;
+        assert !axis.isEmpty();
+        assert !series.isEmpty();
+        return new Chart() {
+            @Override
+            protected void onConfigCreated() {
+                this.setStore(store);
+                this.setAxes(axis);
+                this.setSeries(series);
+                this.setLegend(legend);
+            }
+        };
     }
 
     protected Chart(JavaScriptObject jsObj) {
@@ -102,7 +145,7 @@ public class Chart extends DrawComponent {
     }
 
     /**
-     * Applys the NotificationContainer to an existing element.
+     * Applys the Chart to an existing element.
      * 
      * @param element
      *            the element
@@ -128,7 +171,7 @@ public class Chart extends DrawComponent {
      * 
      * @param axes
      */
-    public void setAxes(ArrayList<AbstractAxis> axis) {
+    public void setAxes(List<AbstractAxis> axis) {
         this.axis = axis;
         JsArray<JavaScriptObject> jsos = JsArray.createArray().cast();
         for (AbstractAxis axe : axis) {
@@ -136,18 +179,6 @@ public class Chart extends DrawComponent {
         }
         setAttribute("axes", jsos, true);
 
-    }
-
-    /**
-     * Add a new Axis to this chart. The added axis is not yet on the chart.
-     * <p>
-     * For that <code>drawAxis()</code> must be called
-     * 
-     * @param axis
-     *            , the axis to add
-     */
-    public void addAxis(AbstractAxis axis) {
-        this.axis.add(axis);
     }
 
     /**
@@ -159,18 +190,6 @@ public class Chart extends DrawComponent {
         this.axis = Arrays.asList(axes);
         JsArray<JavaScriptObject> jsos = JsArray.createArray().cast();
         for (AbstractAxis axe : axes) {
-            jsos.push(axe.getJsObj());
-        }
-        setAttribute("axes", jsos, true);
-    }
-
-    /**
-     * Draw the axis of this chart. This must be called after
-     * <code>AddAxis(AbstractAxis axis)</code>
-     */
-    public void drawAxis() {
-        JsArray<JavaScriptObject> jsos = JsArray.createArray().cast();
-        for (AbstractAxis axe : this.axis) {
             jsos.push(axe.getJsObj());
         }
         setAttribute("axes", jsos, true);
@@ -211,7 +230,7 @@ public class Chart extends DrawComponent {
      * 
      * @param series
      */
-    public void setSeries(ArrayList<AbstractSerie> series) {
+    public void setSeries(List<AbstractSerie> series) {
         JsArray<JavaScriptObject> jsos = JsArray.createArray().cast();
         for (AbstractSerie serie : series) {
             jsos.push(serie.getJsObj());
@@ -230,19 +249,6 @@ public class Chart extends DrawComponent {
             jsos.push(serie.getJsObj());
         }
         setAttribute("series", jsos, true);
-    }
-
-    /**
-     * Add a serie to this chart.<br/>
-     * The serie is not yet added to the chart. <br/>
-     * <code>drawSeries()</code> must be called to actually add the serie to the
-     * chart
-     * 
-     * @param serie
-     *            , the serie to add
-     */
-    public void addSeries(AbstractSerie serie) {
-        this.series.add(serie);
     }
 
     /**
@@ -275,17 +281,6 @@ public class Chart extends DrawComponent {
 		}
 		return null;
     }-*/;
-
-    /**
-     * Draw the series if this chart.
-     */
-    public void drawSeries() {
-        JsArray<JavaScriptObject> jsos = JsArray.createArray().cast();
-        for (AbstractSerie serie : this.series) {
-            jsos.push(serie.getJsObj());
-        }
-        setAttribute("series", jsos, true);
-    }
 
     /**
      * The store that supplies data to this chart.
