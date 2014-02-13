@@ -37,6 +37,7 @@ import com.google.gwt.core.client.JsArray;
 public class BaseModel extends JsObject {
 
     protected Map<String, Object> map = new HashMap<String, Object>();
+    protected boolean allowNestedValues = true;
 
     public BaseModel() {
         jsObj = JsoHelper.createObject();
@@ -46,12 +47,19 @@ public class BaseModel extends JsObject {
         super(obj);
     }
 
-    public <X> void set(String property, X value) {
+    @SuppressWarnings("unchecked")
+    public <X> X set(String property, X value) {
+        map.put(property, value);
+        _setNative(property, value);
+        return (X) map.get(property);
+    }
+
+    public <X> void set(String property, String value) {
         map.put(property, value);
         _setNative(property, value);
     }
 
-    public <X> void set(String property, Date value) {
+    public void set(String property, Date value) {
         map.put(property, value);
         _setDateNative(property, value);
     }
@@ -584,5 +592,9 @@ public class BaseModel extends JsObject {
 		var val = record.data;
 		return val === undefined ? null : val;
     }-*/;
+
+    protected void notifyPropertyChanged(String name, Object value, Object oldValue) {
+
+    }
 
 }

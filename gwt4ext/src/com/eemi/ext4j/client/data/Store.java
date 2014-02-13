@@ -121,6 +121,18 @@ public class Store extends JsObject {
         init(data, new HashSet<String>(Arrays.asList(fields)));
     }
 
+    public Store(List<? extends BaseModel> data, List<String> fields) {
+        this(data, fromList(fields));
+    }
+
+    private static String[] fromList(List<String> fields) {
+        String[] f = new String[fields.size()];
+        for (int i = 0; i < f.length; i++) {
+            f[i] = fields.get(i);
+        }
+        return f;
+    }
+
     public Store(List<? extends BaseModel> data, ProxyConfig proxy, String... fields) {
         assert fields.length != 0 : "Fields list cannot be empty.";
         init(data, new HashSet<String>(Arrays.asList(fields)), proxy);
@@ -469,7 +481,7 @@ public class Store extends JsObject {
      * 
      * @param data
      */
-    public void setData(ArrayList<? extends BaseModel> data) {
+    public void setData(List<? extends BaseModel> data) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();
@@ -927,7 +939,7 @@ public class Store extends JsObject {
     /**
      * The collection of sorters currently applied to this Store
      */
-    public void setSorters(ArrayList<String> sorters) {
+    public void setSorters(List<String> sorters) {
         JsArrayString values = JsArrayString.createArray().cast();
         for (String s : sorters) {
             values.push(s);
@@ -1072,7 +1084,7 @@ public class Store extends JsObject {
      *            , True to add the records to the existing records in the
      *            store, false to remove the old ones first
      */
-    public void loadData(ArrayList<? extends BaseModel> data, boolean append) {
+    public void loadData(List<? extends BaseModel> data, boolean append) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();
@@ -1084,7 +1096,7 @@ public class Store extends JsObject {
         loadData(JsoHelper.arrayConvert(storeData), append);
     }
 
-    public void loadData(ArrayList<? extends BaseModel> data) {
+    public void loadData(List<? extends BaseModel> data) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();
