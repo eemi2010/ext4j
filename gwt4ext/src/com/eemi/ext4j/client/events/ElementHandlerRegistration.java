@@ -24,54 +24,56 @@ import com.google.gwt.core.client.JavaScriptObject;
  * Registration class for event handlers. This class is returned when adding an
  * event handler to an {@link ExtElement}.
  */
-public class ElementHandlerRegistration implements com.google.gwt.event.shared.HandlerRegistration {
+public class ElementHandlerRegistration implements
+		com.google.gwt.event.shared.HandlerRegistration {
 
-    private final ExtElement widget;
-    private final String eventName;
-    private final JavaScriptObject callback;
+	private final ExtElement widget;
+	private final String eventName;
+	private final JavaScriptObject callback;
 
-    public ElementHandlerRegistration(ExtElement widget, String eventName, JavaScriptObject callback) {
-        super();
-        this.widget = widget;
-        this.eventName = eventName;
-        this.callback = callback;
-    }
+	public ElementHandlerRegistration(ExtElement widget, String eventName,
+			JavaScriptObject callback) {
+		super();
+		this.widget = widget;
+		this.eventName = eventName;
+		this.callback = callback;
+	}
 
-    /**
-     * @return the widget
-     */
-    public ExtElement getElement() {
-        return widget;
-    }
+	/**
+	 * @return the widget
+	 */
+	public ExtElement getElement() {
+		return widget;
+	}
 
-    /**
-     * @return the eventName
-     */
-    public String getEventName() {
-        return eventName;
-    }
+	/**
+	 * @return the eventName
+	 */
+	public String getEventName() {
+		return eventName;
+	}
 
-    /**
-     * @return the callback
-     */
-    public JavaScriptObject getCallback() {
-        return callback;
-    }
+	/**
+	 * @return the callback
+	 */
+	public JavaScriptObject getCallback() {
+		return callback;
+	}
 
-    /**
-     * Unregisters the event handler from the component
-     */
-    public native void unregister()/*-{
+	/**
+	 * Unregisters the event handler from the component
+	 */
+	public native void unregister()/*-{
 		var widget = this.@com.eemi.ext4j.client.events.ElementHandlerRegistration::getElement()();
 		var widgetPeer = widget.@com.eemi.ext4j.client.core.ExtElement::getJsObj()();
-		var event = this.@com.eemi.ext4j.client.events.HandlerRegistration::getEventName()();
+		var event = this.@com.eemi.ext4j.client.events.ElementHandlerRegistration::getEventName()();
 		var fn = this.@com.eemi.ext4j.client.events.ElementHandlerRegistration::getCallback()();
-		widegtPeer.removeListener(event, fn);
-    }-*/;
+		widgetPeer.removeListener(event, fn);
+	}-*/;
 
-    @Override
-    public void removeHandler() {
-        unregister();
-    }
+	@Override
+	public void removeHandler() {
+		unregister();
+	}
 
 }
