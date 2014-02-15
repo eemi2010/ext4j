@@ -2475,7 +2475,7 @@ public class ExtElement extends DomElement {
     public native void enableShadow()/*-{
 		var elem = this.@com.eemi.ext4j.client.core.JsObject::getJsObj()();
 		if (elem.disableShadow) {
-			elem.shadow = el._shadow;
+			elem.shadow = elem._shadow;
 			elem.enableShadow();
 		}
     }-*/;
