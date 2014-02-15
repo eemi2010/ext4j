@@ -18,6 +18,7 @@
 package com.eemi.ext4j.client.core;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -42,6 +43,13 @@ public class DomUtil {
 
     public static void setID(Element element, String id) {
         element.setPropertyString("id", id);
+    }
+
+    public static void remove(String elementId) {
+        Element el = DOM.getElementById(elementId);
+        if (el != null) {
+            el.removeFromParent();
+        }
     }
 
 }
