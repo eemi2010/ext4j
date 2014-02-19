@@ -36,15 +36,6 @@ public class Ext {
     }
 
     /**
-     * The version of the underlying ExtJS Framework
-     * 
-     * @return, the version of ExtJS
-     */
-    public static native String getVersion()/*-{
-		return $wnd.Ext.version;
-    }-*/;
-
-    /**
      * URL to a blank file used by Ext when in secure mode for iframe src and
      * onReady src to prevent the IE insecure content warning (defaults to
      * javascript:false).
@@ -54,6 +45,25 @@ public class Ext {
      */
     public static native void setSslSecureUrl(String url)/*-{
 		$wnd.Ext.SSL_SECURE_URL = url;
+    }-*/;
+
+    /**
+     * he current version of IE (0 if the browser is not IE). This does not
+     * account for the documentMode of the current page, which is factored into
+     * isIE7, isIE8 and isIE9.
+     * 
+     * @return
+     */
+    public static native int getIeVersion()/*-{
+		return $wnd.Ext.ieVersion;
+    }-*/;
+
+    /**
+     * Sets the default font-family to use for components that support a glyph
+     * config.
+     */
+    public static native void setGlyphFontFamily(String value)/*-{
+		$wnd.Ext.setGlyphFontFamily(value);
     }-*/;
 
     /**
@@ -969,6 +979,34 @@ public class Ext {
 		return ceJS == null || ceJS === undefined ? null
 				: @com.ait.ext4j.client.core.CompositeElement::instance(Lcom/google/gwt/core/client/JavaScriptObject;)(ceJS);
     }-*/;
+
+    /**
+     * Get the version number of the supplied package name; will return the last
+     * registered version (last Ext.setVersion call) if there's no package name
+     * given.
+     */
+    public static native Version getVersion()/*-{
+		var obj = $wnd.Ext.getVersion();
+		return @com.ait.ext4j.client.core.Version::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
+    }-*/;
+
+    /**
+     * Get the version number of the supplied package name; will return the last
+     * registered version (last Ext.setVersion call) if there's no package name
+     * given.
+     */
+    public static native Version getVersion(String packageName)/*-{
+		var obj = $wnd.Ext.getVersion(packageName);
+		return @com.ait.ext4j.client.core.Version::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
+    }-*/;
+
+    public static Version getExtVersion() {
+        return getVersion("extjs");
+    }
+
+    public static Version getCoreVersion() {
+        return getVersion("core");
+    }
 
     private static native void createModel(String name, JsArray<ModelFieldDefinition> f)/*-{
 		$wnd.Ext.define(name, {
