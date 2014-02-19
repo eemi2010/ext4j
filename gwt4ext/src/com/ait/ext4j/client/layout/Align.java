@@ -19,7 +19,8 @@ package com.ait.ext4j.client.layout;
 
 public enum Align {
 
-    CENTER("center"), END("end"), STRECH("stretch"), STRECH_MAX("stretchmax"), START("start"), TOP("top");
+    CENTER("center"), END("end"), STRECH("stretch"), STRECH_MAX("stretchmax"), START("start"), TOP("top"), MIDDLE(
+                    "middle");
 
     private String align;
 
