@@ -475,6 +475,14 @@ public abstract class Field extends BoxComponent {
         setAttribute("labelAlign", labelAlign, true, true);
     }
 
+    public void setLabelWidth(double value) {
+        setAttribute("labelWidth", value, true);
+    }
+
+    public void setLabelWidth(String value) {
+        setAttribute("labelWidth", value, true);
+    }
+
     /**
      * Set the fields label.
      * 
