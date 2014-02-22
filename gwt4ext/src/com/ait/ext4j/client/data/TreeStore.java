@@ -17,7 +17,7 @@
  */
 package com.ait.ext4j.client.data;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.ait.ext4j.client.core.JsoHelper;
 import com.ait.ext4j.client.data.proxy.ProxyConfig;
@@ -40,7 +40,7 @@ public class TreeStore extends Store {
         create();
     }
 
-    public TreeStore(ArrayList<? extends TableItem> data) {
+    public TreeStore(List<? extends TableItem> data) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();
@@ -48,7 +48,7 @@ public class TreeStore extends Store {
         create(JsoHelper.arrayConvert(storeData), false);
     }
 
-    public TreeStore(ArrayList<? extends TableItem> data, SorterConfig... sorters) {
+    public TreeStore(List<? extends TableItem> data, SorterConfig... sorters) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();
@@ -56,7 +56,7 @@ public class TreeStore extends Store {
         create(JsoHelper.arrayConvert(storeData), false, JsoHelper.arrayConvert(sorters));
     }
 
-    public TreeStore(ArrayList<? extends TableItem> data, boolean expanded) {
+    public TreeStore(List<? extends TableItem> data, boolean expanded) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();
@@ -64,7 +64,7 @@ public class TreeStore extends Store {
         create(JsoHelper.arrayConvert(storeData), expanded);
     }
 
-    public TreeStore(ArrayList<? extends TableItem> data, boolean expanded, SorterConfig... sorters) {
+    public TreeStore(List<? extends TableItem> data, boolean expanded, SorterConfig... sorters) {
         JavaScriptObject[] storeData = new JavaScriptObject[data.size()];
         for (int i = 0; i < data.size(); i++) {
             storeData[i] = data.get(i).getJsObj();

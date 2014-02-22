@@ -1,20 +1,19 @@
 /**
- Ext4j UI Library
- Copyright 2014, Alain Ekambi, and individual contributors as indicated
- by the @authors tag. See the copyright.txt in the distribution for a
- full listing of individual contributors.
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ * Ext4j UI Library Copyright 2014, Alain Ekambi, and individual contributors as
+ * indicated by the @authors tag. See the copyright.txt in the distribution for
+ * a full listing of individual contributors.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.ait.ext4j.client.data;
 
@@ -84,7 +83,7 @@ public class TableItem extends BaseModel {
         JsoHelper.setAttribute(jsObj, "children", array);
     }
 
-    public void setChildren(ArrayList<? extends TableItem> children) {
+    public void setChildren(List<? extends TableItem> children) {
         this.setLeaf(false);
         JsArray<JavaScriptObject> array = JsArray.createArray().cast();
         for (TableItem model : children) {
@@ -100,7 +99,8 @@ public class TableItem extends BaseModel {
 
     public native boolean isLeaf()/*-{
 		var jso = this.@com.ait.ext4j.client.core.JsObject::jsObj;
-		return jso.get("leaf");
+		var leaf = jso.get("leaf");
+		return leaf ? leaf : false;
     }-*/;
 
     public void setExpanded(boolean value) {
@@ -109,18 +109,25 @@ public class TableItem extends BaseModel {
 
     public native boolean isExpanded()/*-{
 		var jso = this.@com.ait.ext4j.client.core.JsObject::jsObj;
-		return jso.get("expanded");
+		var expanded = jso.get("expanded");
+		return expanded ? expanded : false;
     }-*/;
 
     public native BaseModel getRaw()/*-{
 		var jso = this.@com.ait.ext4j.client.core.JsObject::jsObj;
 		var obj = jso.raw;
+		if (!obj) {
+			return null;
+		}
 		return @com.ait.ext4j.client.data.BaseModel::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
     }-*/;
 
     public native BaseModel getData()/*-{
 		var jso = this.@com.ait.ext4j.client.core.JsObject::jsObj;
 		var obj = jso.data;
+		if (!obj) {
+			return null;
+		}
 		return @com.ait.ext4j.client.data.BaseModel::new(Lcom/google/gwt/core/client/JavaScriptObject;)(obj);
     }-*/;
 
